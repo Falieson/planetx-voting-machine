@@ -1,0 +1,11 @@
+JohnGault2016
+IndependentRankedPoll
+WriteIn2016{President}
+Anarchy2016
+VoteNoEstablishment2016
+2016VoteFree
+VoteFree2016
+FreeVoter2016
+FreeVote
+IndependentVoter
+IndependentVote
