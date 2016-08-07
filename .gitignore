@@ -4,3 +4,4 @@ node_modules/
 meteor_packages
 .DS_Store
 npm-debug.log
+.project

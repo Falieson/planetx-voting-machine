@@ -7,6 +7,8 @@ import { render } from 'react-dom'
 import { Provider } from 'react-redux';
 import Store from '../imports/ui/store/store.js';
 
+import injectTapEventPlugin from 'react-tap-event-plugin';
+
 import App from '../imports/ui/App.jsx';
 
 function AppRoot() {
@@ -20,6 +22,8 @@ function AppRoot() {
 }
 
 Meteor.startup(()=> {
+  injectTapEventPlugin(); // Required for Material IconMenu (v.0.15.0)
+
   render(
     <AppRoot />,
     document.getElementById('root')

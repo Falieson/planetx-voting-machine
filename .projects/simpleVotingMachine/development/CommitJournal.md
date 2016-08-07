@@ -1,6 +1,22 @@
 # Simple Voting Machine
-### 1.A.) Fixture Data for Top Candidates
+### 1.B) List of Candidates
+##### 1.B.1) Simple UI
 Commit: `{this}`
+
+Branch: `voting_machine/simple`
+
+Message: `SVM 1.B.1) Create UI for List of Candidates`
+
+Project:
+* `Candidates Material-UI Selectable List with Picture and Formal Name`
+
+Notes:
+* `More Work: Only dummy redux for fetching candidates list`
+* `Missing:   Selecting a Candidate should redux`
+
+
+### 1.A) Fixture Data for Top Candidates
+Commit: `#3186cae3`
 
 Branch: `voting_machine/simple`
 
