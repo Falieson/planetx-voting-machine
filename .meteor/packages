@@ -16,8 +16,9 @@ tracker@1.1.0                 # Meteor's client-side reactive programming librar
 
 # DB
 mongo@1.1.10                   # The database Meteor supports right now
-# aldeed:simple-schema
-# ddp-rate-limiter
+dburles:factory
+aldeed:simple-schema
+ddp-rate-limiter
 
 # Validation
 mdg:validated-method
