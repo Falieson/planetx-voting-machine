@@ -5,15 +5,15 @@ export const CANDIDATES_FETCH_WAITING = 'CANDIDATES_FETCH_WAITING';
 export const CANDIDATES_FETCH_SUCCESS = 'CANDIDATES_FETCH_SUCCESS';
 
 // ## Deliver Task Lists
-export function fetchTaskLists() {
+export function fetchCandidates() {
   return dispatch => {
     const Lists = CandidatesView();
 
-    dispatch(receiveTaskLists(Lists));
+    dispatch(receiveCandidatesLists(Lists));
   }
 }
 
-function receiveTaskLists(data) {
+function receiveCandidatesLists(data) {
   return {
     type: CANDIDATES_FETCH_SUCCESS,
     data,
@@ -23,7 +23,7 @@ function receiveTaskLists(data) {
 
 
 // ## Waiting for Subscription
-export function taskListSubscriptionPending() {
+export function subscriptionForCandidatesPending() {
   return dispatch => {
     dispatch(waitingForTaskListSubscription());
   }

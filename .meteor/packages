@@ -15,26 +15,27 @@ tracker@1.1.0                 # Meteor's client-side reactive programming librar
 # accounts-password
 
 # DB
-mongo@1.1.10                   # The database Meteor supports right now
+mongo@1.1.12                   # The database Meteor supports right now
 dburles:factory
 aldeed:simple-schema
-ddp-rate-limiter
+ddp-rate-limiter@1.0.5
 
 # Validation
 mdg:validated-method
 mdg:validation-error
 
 # Build
-standard-minifier-css@1.1.8   # CSS minifier run for production mode
-standard-minifier-js@1.1.8    # JS minifier run for production mode
-es5-shim@4.6.13                # ECMAScript 5 compatibility for older browsers
-static-html@1.1.11
+standard-minifier-css@1.2.0   # CSS minifier run for production mode
+standard-minifier-js@1.2.0    # JS minifier run for production mode
+es5-shim@4.6.14                # ECMAScript 5 compatibility for older browsers
+static-html@1.1.12
 webpack:webpack
 
 # React
 webpack:react
 webpack:less
-less@2.7.4
+less@2.7.5
 
 # Unsorted
 random@1.0.10
+shell-server

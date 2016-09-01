@@ -1,7 +1,7 @@
 {
-  "name": "independent-poll",
+  "name": "planetx-poll-demo",
   "private": true,
-  "license": "none",
+  "license": "MIT",
   "main": "server/main.js",
   "browser": "client/main.jsx",
   "scripts": {

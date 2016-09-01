@@ -22,8 +22,12 @@ Create Account with Login and Email Recovery to update later
     - List of Candidates
 
   C) Select Candidate
+    - Component: (**CTA**) Vote for Selected Candidate
+    - Redux: HandleCandidateSelection
 
   D) Submit Ballot
+    - Redux: HandleCandidateSubmission
+    - DB: Record Vote
 
 2. Record and Update Vote with a User Account
 
@@ -38,5 +42,5 @@ Create Account with Login and Email Recovery to update later
   - Ranked Selector and Veto UI: Show Position and Point Value
   - Mobile First
     : select position => select from list of candidates
-    
+
   B) Submit Ballot

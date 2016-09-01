@@ -1,7 +1,23 @@
 # Simple Voting Machine
 ### 1.B) List of Candidates
-##### 1.B.1) Simple UI
+##### 1.B.2) Setup Redux: Fetch Candidates
 Commit: `{this}`
+
+Branch: `voting_machine/simple`
+
+Message: `SVM 1.B.2) Load Candidates from Store into UI`
+
+Project:
+* `Fixture generated DB data is now loaded into the UI`
+* `Shuffle the list of candidates`
+
+Notes:
+* `Stein picture was updated`
+* `Selecting a candidate not really missing from step 1.B.1, moved to 1.C.1`
+* `Upgraded to Meteor 1.4.1`
+
+##### 1.B.1) Simple UI
+Commit: `#a41681f7`
 
 Branch: `voting_machine/simple`
 

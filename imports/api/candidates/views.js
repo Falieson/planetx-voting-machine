@@ -20,11 +20,27 @@ const all = (filters)=> {
     console.log("Where did filters come from?", filters);
   }
 
+  const query = {
+    _id:    {$ne: "init"}
+  };
+
+  const fields = {
+    _id:    1,
+    name:   1,
+    image:  1,
+  };
+
+
   if(Meteor.isClient){
-    const results = Candidates.find().fetch();
+    const results = Candidates.find(query, fields).fetch();
+
+    if(debug){
+      console.log(`Publishing Candidates: ${results.length}`);
+    }
+
     return results;
   } else {
-    const results= Candidates.find();
+    const results= Candidates.find(query, fields);
 
     if(debug == 2){
       console.log(`Publishing All (${results.count()}) Candidates: `, results.fetch());
