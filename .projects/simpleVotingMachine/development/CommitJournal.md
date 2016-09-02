@@ -1,7 +1,21 @@
 # Simple Voting Machine
+### 1.C) Select Candidate
+##### 1.C.1) Simple UI
+Commit: `{this}`
+
+Branch: `voting_machine/simple`
+
+Message: `SVM 1.C.1) Create UI to Submit Vote for Candidate`
+
+Project:
+* `Call to Action: Vote for Selected Candidate`
+
+Notes:
+* ``
+
 ### 1.B) List of Candidates
 ##### 1.B.2) Setup Redux: Fetch Candidates
-Commit: `{this}`
+Commit: `#4abd2120`
 
 Branch: `voting_machine/simple`
 

@@ -16,6 +16,7 @@ const createCandidate = ({first, last, title, titleShortened, party, isPartyChoi
       last,
       full: `${first} ${last}`,
       title: title,
+      titleShortened,
       formal: `${titleShortened} ${last}`
     },
     party: {

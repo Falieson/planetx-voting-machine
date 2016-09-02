@@ -3,8 +3,8 @@ import { Component } from 'react';
 
 import Paper from 'material-ui/Paper';
 
-import CandidatesListContainer        from '../containers/CandidateList.jsx';
-// import SubmitBallotButton   from '../components/submitBallot/Button.jsx'; <SubmitBallotButton />
+import CandidatesListContainer  from '../containers/CandidateList.jsx';
+import SubmitBallotButton       from '../components/submitBallot/Button.jsx';
 
 // Ballot Page - list of candidates, select candidate, and vote
 export default class MobileLayout extends Component {
@@ -18,6 +18,7 @@ export default class MobileLayout extends Component {
     return (
       <Paper style={style} zDepth={1} rounded={false}>
         <CandidatesListContainer />
+        <SubmitBallotButton />
       </Paper>
     );
   }
