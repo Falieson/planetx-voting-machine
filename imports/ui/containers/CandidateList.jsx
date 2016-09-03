@@ -1,18 +1,24 @@
+// Libraries - Imported
 import { Random } from 'meteor/random';
 import Tracker from 'tracker-component';
 import { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-
+// Libraries - UI
+import Paper from 'material-ui/Paper';
+// Libraries - Local
 import { shuffle } from '../../lib/javascript.js';
 
-import Paper from 'material-ui/Paper';
-
-import CandidatesList from '../components/candidatesList/List.jsx';
+// Actions
 import { fetchCandidates, subscriptionForCandidatesPending } from '../actions/Candidates.js';
 import { updateBallotForCandidate } from '../actions/Ballot.js';
 
+// Components
+import CandidatesList from '../components/candidatesList/List.jsx';
 
-// Candidates Page - Show All Candidates
+
+
+// Candidates Container - Show All Candidates
+// Container: interacts with store and db
 export default class CandidatesListContainer extends Tracker.Component {
   componentWillMount() {
     const {dispatch} = this.props;
@@ -51,9 +57,9 @@ export default class CandidatesListContainer extends Tracker.Component {
     );
   }
 
-  onSelectCandidate = id => {
+  onSelectCandidate = candidateId => {
     const {dispatch} = this.props;
-    dispatch( updateBallotForCandidate(id) );
+    dispatch( updateBallotForCandidate(candidateId) );
   }
 }
 

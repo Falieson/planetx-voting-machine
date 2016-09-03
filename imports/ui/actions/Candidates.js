@@ -1,10 +1,10 @@
-//# SUBSCRIBE TO CANDIDATES VIA METEOR MONGO API
+// CANDIDATES - FETCH
 import { CandidatesView } from '../../api/candidates/views.js';
 
 export const CANDIDATES_FETCH_WAITING = 'CANDIDATES_FETCH_WAITING';
 export const CANDIDATES_FETCH_SUCCESS = 'CANDIDATES_FETCH_SUCCESS';
 
-// ## Deliver Candidates
+// # Deliver Candidates
 export function fetchCandidates() {
   return dispatch => {
     const Candidates = CandidatesView.all();

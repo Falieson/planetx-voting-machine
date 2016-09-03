@@ -1,11 +1,26 @@
 # Simple Voting Machine
-### 1.C) Select Candidate
-##### 1.C.2) Redux: Select Candidate
+### 1.D) Submit Ballot
+##### 1.D.1) Redux: Handle Candidate Submit
 Commit: `{this}`
 
 Branch: `voting_machine/simple`
 
-Message: `SVM 1.C.2) Put selectedCandidate in store and render result`
+Message: `SVM 1.D.1) Save ballot submission in store and confirm DB save`
+
+Project:
+* `Save submitted ballot in the redux store`
+
+Notes:
+* `Could setup some UI responses for optimistic update and DbSave_failed but the UI might change by the final so going to skip it for now`
+
+
+### 1.C) Select Candidate
+##### 1.C.2) Redux: Select Candidate
+Commit: `#1ba47635`
+
+Branch: `voting_machine/simple`
+
+Message: `SVM 1.C.2) Save selectedCandidate in store and render result`
 
 Project:
 * `Save selected candidate to the redux store`

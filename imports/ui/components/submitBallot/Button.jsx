@@ -17,15 +17,24 @@ export default class SubmitBallotButton extends Component {
 
     return (
       <RaisedButton
-        label={callToAction(candidate.formal)}
-        disabled={ballotComplete}
-        fullWidth={true}
+        label       = {callToAction(candidate.formal)}
+        primary     = {true}
+        onTouchTap  = {this.handleSubmit}
+        disabled    = {ballotComplete}
+        fullWidth   = {true}
       />
     );
+  }
+
+  handleSubmit = event => {
+    event.preventDefault();
+    this.props.onSubmit()
   }
 }
 
 SubmitBallotButton.propTypes = {
-  candidateName: PropTypes.object,
-  ready: PropTypes.bool
+  candidateId:    PropTypes.string,
+  candidateName:  PropTypes.object,
+  ready:          PropTypes.bool,
+  onSubmit: PropTypes.func.isRequired,
 }

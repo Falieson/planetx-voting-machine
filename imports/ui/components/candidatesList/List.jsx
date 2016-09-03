@@ -106,8 +106,7 @@ export default class CandidatesList extends Component {
   }
 
   handleCandidateSelect(id) {
-    event.preventDefault();
-    
+    event.preventDefault();    
     this.props.onSelect(id)
   }
 }
