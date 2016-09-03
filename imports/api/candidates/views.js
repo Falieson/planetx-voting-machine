@@ -8,8 +8,14 @@ const debug = false;
 */
 
 import { Meteor } from 'meteor/meteor';
-
+import { getQuery } from '../helpers/getQuery.js';
 import { Candidates } from './collections.js';
+
+const publicFields = {
+  _id:    1,
+  name:   1,
+  image:  1,
+};
 
 const all = (filters)=> {
   if(debug || filters){
@@ -24,15 +30,8 @@ const all = (filters)=> {
     _id:    {$ne: "init"}
   };
 
-  const fields = {
-    _id:    1,
-    name:   1,
-    image:  1,
-  };
-
-
   if(Meteor.isClient){
-    const results = Candidates.find(query, fields).fetch();
+    const results = Candidates.find(query, publicFields).fetch();
 
     if(debug){
       console.log(`Publishing Candidates: ${results.length}`);
@@ -40,7 +39,7 @@ const all = (filters)=> {
 
     return results;
   } else {
-    const results= Candidates.find(query, fields);
+    const results= Candidates.find(query, publicFields);
 
     if(debug == 2){
       console.log(`Publishing All (${results.count()}) Candidates: `, results.fetch());
@@ -50,4 +49,23 @@ const all = (filters)=> {
   }
 };
 
-export const CandidatesView = all;
+const one = (target, filters) => {
+  if(debug){
+    console.log("ITEMVIEW: one");
+  }
+
+  const options = {_id: target};
+  if(Meteor.isClient){
+    const result = Candidates.findOne(options, publicFields);
+
+    if(debug == 2){
+      console.log(`Fetched Candidate[${target}]:  `, result);
+    }
+
+    return result;
+  } else {
+    return Candidates.find(options, publicFields);
+  }
+};
+
+export const CandidatesView = {all, one};

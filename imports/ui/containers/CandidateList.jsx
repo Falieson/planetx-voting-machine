@@ -7,17 +7,19 @@ import { shuffle } from '../../lib/javascript.js';
 
 import Paper from 'material-ui/Paper';
 
-import { fetchCandidates, subscriptionForCandidatesPending } from '../actions/Candidates.js';
 import CandidatesList from '../components/candidatesList/List.jsx';
+import { fetchCandidates, subscriptionForCandidatesPending } from '../actions/Candidates.js';
+import { updateBallotForCandidate } from '../actions/Ballot.js';
 
-// Lists Page - Show multiple lists
+
+// Candidates Page - Show All Candidates
 export default class CandidatesListContainer extends Tracker.Component {
   componentWillMount() {
     const {dispatch} = this.props;
 
     this.autorun(()=> {
       this.subscribe('candidates')
-      dispatch(fetchCandidates());
+      dispatch( fetchCandidates() );
 
         // if expecting a reactive update to candidates
         // FIXME: this TrackerComponent feature is broke
@@ -43,16 +45,22 @@ export default class CandidatesListContainer extends Tracker.Component {
 
     return (
       <CandidatesList
-        items={shuffle(this.props.items)}
+        items     = {shuffle(this.props.items)}
+        onSelect  = {this.onSelectCandidate.bind(this)}
       />
     );
+  }
+
+  onSelectCandidate = id => {
+    const {dispatch} = this.props;
+    dispatch( updateBallotForCandidate(id) );
   }
 }
 
 CandidatesListContainer.propTypes = {
-  items: PropTypes.array.isRequired,
-  lastUpdated: PropTypes.number,
-  dispatch: PropTypes.func.isRequired
+  items:        PropTypes.array.isRequired,
+  lastUpdated:  PropTypes.number,
+  dispatch:     PropTypes.func.isRequired
 }
 
 function mapStoreToProps(state) {

@@ -1,7 +1,23 @@
 # Simple Voting Machine
 ### 1.C) Select Candidate
-##### 1.C.1) Simple UI
+##### 1.C.2) Redux: Select Candidate
 Commit: `{this}`
+
+Branch: `voting_machine/simple`
+
+Message: `SVM 1.C.2) Put selectedCandidate in store and render result`
+
+Project:
+* `Save selected candidate to the redux store`
+* `Add findOne Candidate to Meteor/Mongo API`
+* `Access store to display the candidates name in the CTA`
+
+Notes:
+* ``
+
+
+##### 1.C.1) Simple UI
+Commit: `#fd8e7a82`
 
 Branch: `voting_machine/simple`
 
@@ -14,7 +30,7 @@ Notes:
 * ``
 
 ### 1.B) List of Candidates
-##### 1.B.2) Setup Redux: Fetch Candidates
+##### 1.B.2) Redux: Fetch Candidates
 Commit: `#4abd2120`
 
 Branch: `voting_machine/simple`

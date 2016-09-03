@@ -40,26 +40,7 @@ function wrapState(ComposedComponent) {
 }
 SelectableList = wrapState(SelectableList);
 
-// Connect the store(state)ToProps() to get items = Candidates()
-// If Items.length < 1 === LoadingState()
-// ListHeader =
-// A.1) Test with Displaying Items.length()
-// A.2) Get Redux Fetch() Working
-// B) Item data in ListItem
-
-// # First create your component function
-// Candidate List component - Lists out all the Candidates
 export default class CandidatesList extends Component {
-  // constructor(props) {
-  //   super(props);
-  //
-  //   const amount =(target)=> target? target.length:0;
-  //
-  //   this.state = {
-  //     candidates: props.items,
-  //     candidateAmount: amount(props.items),
-  //   };
-  // }
   render() {
     const style = {
       height: "100%",
@@ -87,55 +68,51 @@ export default class CandidatesList extends Component {
   }
 
   renderListItems() {
-    function RenderList(items) {
+    const items = this.props.items;
+
+    if(items && items.length > 0) {
+      console.log(`Found ${items.length} Items`);
+
       function picture(imageUrl) {
         return (
           <Avatar src={imageUrl}/>
         );
       }
 
-      return items.map( (item)=> {
+      const result = items.map( (item)=> {
         const currKey = !item._id? Random.id() : item._id;
         const title = item.name.formal;
 
         return (
-          // NOTE: I have to add this items={} property to make an error go away
           <ListItem
-            key           ={currKey}
-            value         ={currKey}
-            primaryText   ={title}
-            leftAvatar    ={picture(item.image)}
+            key           = {currKey}
+            value         = {currKey}
+            primaryText   = {title}
+            leftAvatar    = {picture(item.image)}
+            onTouchTap    = {this.handleCandidateSelect.bind(this, currKey)}
           />
         );
 
       } );
 
-
-      // console.log("renderListItems:RenderList=> ", this);
-      // const result = _(items).forEach(function(item, dex) {
-      //   console.log(`ITEM[${dex}] `, item.name.formal);
-      //
-      //   return ListItem(dex, item._id, item.name.formal, item.image);
-      // });
-      //
-      // console.log("RESULT> ", result);
-      //
-      //
-      // return result;
-    }
-
-    if(this.props.items && this.props.items.length > 0) {
-      const result = RenderList(this.props.items);
+      console.log("Created: ", result[0]);
 
       return result;
     }
+
     else {
       return (<p>Loading ....</p>);
     }
   }
 
+  handleCandidateSelect(id) {
+    event.preventDefault();
+    
+    this.props.onSelect(id)
+  }
 }
 
 CandidatesList.propTypes = {
-  items: PropTypes.array,
+  items:    PropTypes.array.isRequired,
+  onSelect: PropTypes.func.isRequired,
 }

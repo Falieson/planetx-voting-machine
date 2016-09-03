@@ -3,22 +3,22 @@ import RaisedButton from 'material-ui/RaisedButton';
 
 export default class SubmitBallotButton extends Component {
   render() {
-    const candidate = this.props.selectedCandidate;
+    const candidate = this.props.candidateName? this.props.candidateName:false;
+    const ballotComplete = this.props.ready? false:true;
 
-    const callToAction =()=> {
-      if(candidate){
-        return `Vote for ${candidate}`;
+    function callToAction(name) {
+      if(name){
+        return `Vote for ${name}`;
       }
       else{
         return `Make your Selection`;
       }
     }
-    const isDisabled =()=> candidate? false:true;
 
     return (
       <RaisedButton
-        label={callToAction()}
-        disabled={isDisabled()}
+        label={callToAction(candidate.formal)}
+        disabled={ballotComplete}
         fullWidth={true}
       />
     );
@@ -26,5 +26,6 @@ export default class SubmitBallotButton extends Component {
 }
 
 SubmitBallotButton.propTypes = {
-  selectedCandidate: PropTypes.string,
+  candidateName: PropTypes.object,
+  ready: PropTypes.bool
 }
