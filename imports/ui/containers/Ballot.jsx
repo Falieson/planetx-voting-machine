@@ -1,5 +1,6 @@
 // Libraries - Imported
 import React, {Component, PropTypes} from 'react';
+import Tracker from 'tracker-component';
 import { connect } from 'react-redux';
 
 // Actions
@@ -12,7 +13,16 @@ import SubmitBallotButton       from '../components/submitBallot/Button.jsx';
 
 // Ballot Container - Show Ballot Submit Button
 // Container: interacts with store and db
-export default class Ballot extends Component {
+export default class Ballot extends Tracker.Component {
+  componentWillMount() {
+    this.autorun(()=> {
+      // Todo: Replace subscription to all ballots with subcsription to user's ballot
+      //  we definitely do not want a subscription to all() ballots
+      
+      this.subscribe('ballots');
+    });
+  }
+
   render() {
     const style = {
       height: "100%",

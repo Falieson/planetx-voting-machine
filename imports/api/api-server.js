@@ -5,4 +5,4 @@
 
 import './api.js';
 import './candidates/server/publications.js';
-// import './parties/server/publications.js';
+import './ballots/server/publications.js';

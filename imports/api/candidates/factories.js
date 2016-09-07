@@ -3,9 +3,7 @@ import faker        from 'faker';
 
 import { parties, getPartyColor } from './helpers.js';
 
-import {
-  getRandomIntInclusive, getRandomBool
-} from '../../lib/javascript.js';
+import { getRandomIntInclusive, getRandomBool } from '../../lib/javascript.js';
 
 import Candidates   from './collections.js';
 

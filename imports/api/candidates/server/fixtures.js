@@ -1,11 +1,10 @@
-const debug=false;
-
-import { getPartyColor } from '../helpers.js';
+const debug = process.env.NODE_ENV === "development";
 
 import { Candidates }       from '../collections.js';
 import { insertCandidate }  from '../methods.js';
 import '../factories.js'; // #Factory.build('candidate')
-// import '../../parties/factories.js'; // #Factory.build('party')
+
+import { getPartyColor } from '../helpers.js';
 
 const createCandidate = ({first, last, title, titleShortened, party, isPartyChoice, wiki})=> {
   const memberOf = party;
@@ -40,10 +39,10 @@ const createCandidate = ({first, last, title, titleShortened, party, isPartyChoi
 };
 
 if( Meteor.isServer ){
-  const firstLoad = Candidates.find({_id: "init"}).count() === 0;
+  const firstLoad = Candidates.find().count() === 0;
   if( firstLoad ){
 
-    if(debug){console.log("Creating Sanders....");}
+    if(debug){console.log("GENERATING CANDIDATES: STARTED");}
     const Sanders = createCandidate({
       first:            'Bernie',
       last:             'Sanders',
@@ -53,8 +52,6 @@ if( Meteor.isServer ){
       isPartyChoice:    false,
       wiki:             'https://en.wikipedia.org/wiki/Bernie_Sanders',
     });
-    if(debug){console.log("Sanders Created ....");}
-
     const Clinton = createCandidate({
       first:            'Hillary',
       last:             'Clinton',
@@ -118,13 +115,19 @@ if( Meteor.isServer ){
       titleShortened:   'Sen.',
       wiki:             'https://en.wikipedia.org/wiki/Rand_Paul',
     });
+    const newCandidates = [Sanders, Clinton, Johnson, Stein, Warren, Trump, Biden, Paul];
+    if(debug){console.log(`GENERATING CANDIDATES: ${newCandidates.length} Candidates`);}
+
 
     if(debug){console.log("INSERTING CANDIDATES: STARTED");}
-    [Sanders, Clinton, Johnson, Stein, Warren, Trump, Biden, Paul].map((candidate)=> {
+    newCandidates.map((candidate)=> {
       insertCandidate.call(candidate);
     });
 
     if(debug){console.log("INSERTING CANDIDATES: COMPLETED");}
     Candidates.insert({_id: "init", createdAt: Date.now()});
+  }
+  else {
+    if(debug){console.log("CANDIDATE FIXTURES: ALREADY GENERATED");}
   }
 }

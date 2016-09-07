@@ -37,6 +37,7 @@ export function getRandomBool() {
   return getRandomIntInclusive(0,1)===1? true:false;
 }
 
+
 export function shuffle(array) {
   var currentIndex = array.length, temporaryValue, randomIndex;
 
@@ -54,4 +55,9 @@ export function shuffle(array) {
   }
 
   return array;
+}
+
+
+export function daydiff(first, second) {
+    return Math.round((second-first)/(1000*60*60*24));
 }

@@ -1,27 +1,9 @@
-# Outline
--- containers
-choice and rank
-candidates
-results
-change your choices
-secure entrance for changing choices (MultiAuth - FB, GA, etc.)
-manage account and connections
-share your top 5 on X
+#PlanetX-Voting-Machine
+Learn how to use Meteor 1.4, React, Redux by stepping through the commits for this project. A tutorial and more information is coming down the road.
 
--- components
-* candidates
-add candidate
-random top 20 - candidate icons
-list of all candidates
+## Audience
+Intermediate - Advanced MeteorJS or ReactJS developers. There's probably too much here, without enough documentation, for you to be a beginner in both and understand everything thats going on here.
 
-* choices
-13 spots
-
-* results
-10 spots
-graph view
-Voters Count
-
--- features
-md5 ip address
-if ip address matches an existing md5 ip address then warn that only 1 more account is allowed from this address. Multi-citizen houses should be encouraged to use the _mobile app_.
+## Getting Started
+1. Read the docs located in .projects/simpleVotingMachine
+1. Step through each of the commits

@@ -10,16 +10,10 @@ export default function Ballot(state = {
   readyForSubmission: false,
   savingOptimisticly: false,
   saved:              false,
+  error:              {},
   errorMessage:       '',
 
 }, action) {
-  const BALLOT_SUBMIT_FIELDS = {
-    savingOptimisticly:   action.savingOptimisticly,
-    errorMessage:         action.errorMessage,
-    saved:                action.saved,
-    lastUpdated:          action.updatedAt,
-  };
-
   switch (action.type) {
     case BALLOT_UPDATE_CANDIDATE:
       return Object.assign({}, state, {
@@ -32,19 +26,31 @@ export default function Ballot(state = {
     case BALLOT_SUBMIT_OPTIMIST:
       return Object.assign({}, state, {
         candidateId:          action.candidateId,
-        BALLOT_SUBMIT_FIELDS
+
+        savingOptimisticly:   action.savingOptimisticly,
+        errorMessage:         action.errorMessage,
+        saved:                action.saved,
+        lastUpdated:          action.updatedAt,
       });
 
     case BALLOT_SUBMIT_SUCCESS:
       return Object.assign({}, state, {
         candidateId:          action.data._id,
         candidateName:        action.data.name,
-        BALLOT_SUBMIT_FIELDS
+
+        savingOptimisticly:   action.savingOptimisticly,
+        errorMessage:         action.errorMessage,
+        saved:                action.saved,
+        lastUpdated:          action.updatedAt,
       });
 
     case BALLOT_SUBMIT_ERROR:
       return Object.assign({}, state, {
-        BALLOT_SUBMIT_FIELDS
+
+        savingOptimisticly:   action.savingOptimisticly,
+        errorMessage:         action.errorMessage,
+        saved:                action.saved,
+        lastUpdated:          action.updatedAt,
       });
 
     default:

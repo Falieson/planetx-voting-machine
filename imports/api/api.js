@@ -3,4 +3,4 @@
 
 // CLIENT SIDE, or BOTH IMPORTS
 import './candidates/methods.js';
-// import './parties/methods.js';
+import './ballots/methods.js';

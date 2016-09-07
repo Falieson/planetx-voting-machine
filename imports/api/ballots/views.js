@@ -1,4 +1,4 @@
-const debug=false;
+const debug = false;
 /*
   functions exported from this file are used in
   *  methods.js
@@ -8,13 +8,12 @@ const debug=false;
 */
 
 import { Meteor } from 'meteor/meteor';
-// import { getQuery } from '../helpers/getQuery.js';
-import { Candidates } from './collections.js';
+import { getQuery } from '../helpers/getQuery.js';
+import { Ballots } from './collections.js';
 
 const publicFields = {
-  _id:    1,
-  name:   1,
-  image:  1,
+  _id:            1,
+  candidateId:    1,
 };
 
 const all = (filters)=> {
@@ -31,18 +30,18 @@ const all = (filters)=> {
   };
 
   if(Meteor.isClient){
-    const results = Candidates.find(query, publicFields).fetch();
+    const results = Ballots.find(query, publicFields).fetch();
 
     if(debug){
-      console.log(`[CLIENT] Publishing Candidates: ${results.length}`);
+      console.log(`Publishing Ballots: ${results.length}`);
     }
 
     return results;
   } else {
-    const results = Candidates.find(query, publicFields);
+    const results= Ballots.find(query, publicFields);
 
-    if(debug){
-      console.log(`[SERVER] Publishing All (${results.count()}) Candidates: `, results.fetch());
+    if(debug == 2){
+      console.log(`Publishing All (${results.count()}) Ballots: `, results.fetch());
     }
 
     return results;
@@ -56,16 +55,16 @@ const one = (target, filters) => {
 
   const options = {_id: target};
   if(Meteor.isClient){
-    const result = Candidates.findOne(options, publicFields);
+    const result = Ballots.findOne(options, publicFields);
 
-    if(debug){
-      console.log(`Fetched Candidate[${target}]:  `, result);
+    if(debug == 2){
+      console.log(`Fetched Ballot[${target}]:  `, result);
     }
 
     return result;
   } else {
-    return Candidates.find(options, publicFields);
+    return Ballots.find(options, publicFields);
   }
 };
 
-export const CandidatesView = {all, one};
+export const BallotsView = {all, one};

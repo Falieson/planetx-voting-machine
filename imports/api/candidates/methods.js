@@ -4,16 +4,16 @@ import { ValidatedMethod } from 'meteor/mdg:validated-method';
 import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 
 import { Candidates }  from './collections.js';
+
 import { getPartyColor } from './helpers.js';
 
-// TODO: insert candidate
-
 const candidateNameSchema = new SimpleSchema({
-  first:  {type: String },
-  last:   {type: String },
-  full:   {type: String },
-  title:  {type: String, optional: true },
-  formal: {type: String, optional: true },
+  first:          {type: String },
+  last:           {type: String },
+  full:           {type: String },
+  title:          {type: String, optional: true },
+  titleShortened: {type: String, optional: true },
+  formal:         {type: String, optional: true },
 });
 const candidatePartyColorSchema = new SimpleSchema({
   primary:    {type: String },
@@ -49,7 +49,7 @@ export const insertCandidate = new ValidatedMethod({
   }).validator(),
   run({ name, party, links, image, createdAt, createdBy }) {
 
-    Candidates.insert({
+    return Candidates.insert({
       name,
       party,
       links,

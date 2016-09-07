@@ -1,5 +1,5 @@
 {
-  "name": "planetx-poll-demo",
+  "name": "planetx-voting-machine-demo",
   "private": true,
   "license": "MIT",
   "main": "server/main.js",

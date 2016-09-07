@@ -5,9 +5,14 @@
 - share vote w/ comment
 - invite to vote
 - Privacy 			=> encrypt login, email, and ip
+- Anonymity   => report after significantly anonymous
 - 3rd Party Integrations 	=> Burn The Vote
 - Analytics 			=> google analytics, custom analytics
 - Repayment 			=> Pantheon and PayPal
+- Advanced Admin
+ 	- Scrape Wiki for Updated Photo of Candidate
+	- YoutubePlayer - Most Recent Video on Channel or latest tagged with [OUR ACRONYM]
+
 
 # Development Ops
 - Project Mgt: 	Google Docs or Pivotal Tracker (if necessary)

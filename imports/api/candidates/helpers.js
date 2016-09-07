@@ -1,3 +1,17 @@
+const debug=false;
+
+import { CandidatesView } from './views.js';
+import { shuffle } from '../../lib/javascript.js';
+
+export function selectRandomCandidate() {
+  if(debug){console.log("RUNNING SELECT RANDOM CANDIDATE");}
+
+  const Candidates = shuffle(CandidatesView.all().fetch());
+  if(debug){ console.log(`Found ${Candidates.length} Candidates`); }
+
+  return Candidates[0];
+}
+
 export const parties = ['independent', 'republican', 'democratic',  'libertarian', 'green'];
 
 export function getPartyColor (party, isChosen=false, secondary=false) {

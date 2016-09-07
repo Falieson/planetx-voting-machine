@@ -1,7 +1,24 @@
 # Simple Voting Machine
 ### 1.D) Submit Ballot
-##### 1.D.1) Redux: Handle Candidate Submit
+##### 1.D.2) Save Ballot and Vote in Database
 Commit: `{this}`
+
+Branch: `voting_machine/simple`
+
+Message: `SVM 1.D.2) Record vote and ballot submission in database`
+
+Project:
+* `Create Ballots Collection and View`
+* `Create Ballots Fixtures Generator (tests methods and factory)`
+* `Insert Ballot into the DB and update the Redux Store w/ Result`
+
+Notes:
+* `Securing ballot privacy, and Limiting ballot submissions is later`
+* `Tallying ballot totals is for a later commit`
+
+
+##### 1.D.1) Redux: Handle Candidate Submit
+Commit: `#c84285d5`
 
 Branch: `voting_machine/simple`
 

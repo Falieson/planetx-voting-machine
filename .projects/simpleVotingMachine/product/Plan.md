@@ -27,7 +27,7 @@ Create Account with Login and Email Recovery to update later
 
   D) Submit Ballot
     - Redux: HandleCandidateSubmission
-    - DB: Record Vote
+    - DB: Save Ballot - Record Vote
 
 2. Record and Update Vote with a User Account
 

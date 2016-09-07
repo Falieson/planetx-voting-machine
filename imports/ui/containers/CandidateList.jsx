@@ -24,7 +24,7 @@ export default class CandidatesListContainer extends Tracker.Component {
     const {dispatch} = this.props;
 
     this.autorun(()=> {
-      this.subscribe('candidates')
+      this.subscribe('candidates');
       dispatch( fetchCandidates() );
 
         // if expecting a reactive update to candidates

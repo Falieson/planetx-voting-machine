@@ -71,7 +71,7 @@ export default class CandidatesList extends Component {
     const items = this.props.items;
 
     if(items && items.length > 0) {
-      console.log(`Found ${items.length} Items`);
+      // console.log(`Found ${items.length} Items`);
 
       function picture(imageUrl) {
         return (
@@ -95,7 +95,7 @@ export default class CandidatesList extends Component {
 
       } );
 
-      console.log("Created: ", result[0]);
+      // console.log("Created: ", result[0]);
 
       return result;
     }
@@ -106,7 +106,7 @@ export default class CandidatesList extends Component {
   }
 
   handleCandidateSelect(id) {
-    event.preventDefault();    
+    event.preventDefault();
     this.props.onSelect(id)
   }
 }
