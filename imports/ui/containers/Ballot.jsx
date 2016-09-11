@@ -9,8 +9,7 @@ import ReactTransitionGroup from 'react-addons-transition-group';
 import { submitBallotForCandidate } from '../actions/Ballot.js';
 
 // Components
-import VoterRegisterForm          from '../components/voterRegister/Form.jsx';
-// import VoterRegisterForm          from '../components/voterRegister/Paper.jsx';
+import NewAccountContainer        from './NewAccount.jsx';
 import SubmitBallotButton         from '../components/submitBallot/Button.jsx';
 
 
@@ -53,7 +52,7 @@ export default class Ballot extends Tracker.Component {
     return (
       <div>
         <ReactTransitionGroup component={FirstChild}>
-          {ballotReady ? <VoterRegisterForm /> : null}
+          {ballotReady ? <NewAccountContainer /> : null}
         </ReactTransitionGroup>
         <SubmitBallotButton
           candidateId   = {candidateId}
@@ -67,12 +66,15 @@ export default class Ballot extends Tracker.Component {
 
   onSubmitBallot = candidateId => {
     const {dispatch} = this.props;
+
+    // registerUserAndSubmitBallot(user, candidateId)
     dispatch( submitBallotForCandidate(candidateId) );
   }
 }
 
 
 function mapStoreToProps(state) {
+  // const { Ballot, NewAccount } = state;
   const { Ballot } = state;
 
   const {

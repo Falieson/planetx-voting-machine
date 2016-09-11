@@ -21,26 +21,26 @@ Create Account with Login and Email Recovery to update later
   B) List Candidates
     - Candidate Card: Image and Label
     - List of Candidates
-
   C) Select Candidate
     - Component: (**CTA**) Vote for Selected Candidate
     - Redux: HandleCandidateSelection
-
   D) Submit Ballot
     - Redux: HandleCandidateSubmission
     - DB: Save Ballot - Record Vote
 
 2. Record and Update Vote with a User Account
   A) Registration Form UI and Header
-    1. UI for Registration and Form
-    2. Use transition to show UI when candidate is selected
-  B) Meteor Account API
-    1. Register User
-    2. Associate Ballot with UserId
-    3. Secure Ballot so only this.userId() can access it
+    - UI for Registration and Form
+    - Use transition to show UI when candidate is selected
+  B) Create Account in DB
+    - Put account info in Store
+    - Register User
+    - Associate Ballot with UserId
+    - Secure Ballot so only this.userId() can access it
+    - Require & Validate Fields
   C) Returning Users
-    1. Account SignIn
-    2. Restore and Update Ballot
+    - Account SignIn
+    - Restore and Update Ballot
 
 3. Tally Votes and Display Results
   A) Totals Collections

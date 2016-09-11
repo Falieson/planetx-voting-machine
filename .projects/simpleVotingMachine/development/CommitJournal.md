@@ -1,10 +1,24 @@
 # Simple Voting Machine
 ## 2. User Accounts
+### 2.B)  Meteor Account API
+##### 2.B.1) New Account Info in Store
+Version: `0.0.1.3`
+
+Commit: `{this}`
+
+Branch: `votingMachine/simple/account`
+
+Message: `SVM 2.B.1) Redux for Store with New Account Info`
+
+Project:
+* `Redux for New Account, and Container and Component`
+* `Added some styling to the form`
+
 ### 2.A) Account Registration UI & Dummy Header
 ##### 2.A.2) Animate render when Candidate Selected
 Version: `0.0.1.2`
 
-Commit: `{this}`
+Commit: `#75422935`
 
 Branch: `votingMachine/simple/account`
 
@@ -84,9 +98,6 @@ Project:
 * `Add findOne Candidate to Meteor/Mongo API`
 * `Access store to display the candidates name in the CTA`
 
-Notes:
-* ``
-
 
 ##### 1.C.1) Simple UI
 Commit: `#3f1c5cef`
@@ -97,9 +108,6 @@ Message: `SVM 1.C.1) Create UI to Submit Vote for Candidate`
 
 Project:
 * `Call to Action: Vote for Selected Candidate`
-
-Notes:
-* ``
 
 ### 1.B) List of Candidates
 ##### 1.B.2) Redux: Fetch Candidates

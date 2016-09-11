@@ -6,13 +6,12 @@ import {
 export default function Ballot(state = {
   candidateId:        '',
   candidateName:      {},
-  lastUpdated:        false,
   readyForSubmission: false,
   savingOptimisticly: false,
   saved:              false,
   error:              {},
   errorMessage:       '',
-
+  lastUpdated:        false,
 }, action) {
   switch (action.type) {
     case BALLOT_UPDATE_CANDIDATE:

@@ -11,26 +11,25 @@
   -- "All Notifications are opt-in from your settings page"
 */
 
-/*
-Commit: SVM 2.A.2
-When Adding a Transition you must use React Component or you'll get this error:
-```error
-warning.js?8a56:36 Warning: Stateless function components cannot be given refs (See ref ".0" in RegisterContainer created by ReactTransitionGroup). Attempts to access this ref will fail.printWarning @ warning.js?8a56:36warning @ warning.js?8a56:60attachRef @ ReactCompositeComponent.js
-ReactTransitionGroup.js?bd5c:144Uncaught TypeError: Cannot read property 'componentWillEnter' of nullperformEnter @ ReactTransitionGroup.js
-```
-*/
-
 
 import React, {Component, PropTypes} from 'react';
 
 import TextField from 'material-ui/TextField';
 import Paper from 'material-ui/Paper';
+import {orange500, blue500} from 'material-ui/styles/colors';
 
 
 export default class RegisterContainer extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      passwordRaw: ''
+    };
+  }
+
   render() {
     // the styling is a bit ugly but we'll fix it up for the final
-
     const RegsiterContainerStyle = {
       width: '100%',
       textAlign: 'center',
@@ -79,38 +78,85 @@ export default class RegisterContainer extends Component {
   }
 
   renderFields() {
-    const containerStyle = {
-      width: '49%',
-      textAlign: 'center',
-      display: 'inline-block',
-      borderLeft: '1px dashed',
-      marginBottom: '2px'
+    const styles = {
+      floatingLabelStyle: {
+        color: orange500,
+      },
+      floatingLabelFocusStyle: {
+        color: blue500,
+      },
+      errorLabelStyle: {
+        color: blue500,
+        borderColor: blue500,
+      },
+      containerStyle: {
+        width: '49%',
+        textAlign: 'center',
+        display: 'inline-block',
+        borderLeft: '1px dashed',
+        marginBottom: '2px'
+      },
+      h1Style: {
+        margin: '5px 0 0 0'
+      }
     };
-
-    const h1Style = {
-      margin: '5px 0 0 0'
-    };
-
 
     return (
-      <div style={containerStyle}>
-        <h1 style={h1Style}>Register</h1>
+      <div style={styles.containerStyle}>
+        <h1 style={styles.h1Style}>Register</h1>
         <TextField
           floatingLabelText="Public Alias/Name"
           hintText="Username"
+          onChange={this.handleChangeUsername.bind(this)}
+          floatingLabelStyle={styles.floatingLabelStyle}
+          floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
         /><br />
         <TextField
           floatingLabelText="Email for Login/Recovery"
           hintText="Email Address"
+          onChange={this.handleChangeEmail.bind(this)}
+          floatingLabelStyle={styles.floatingLabelStyle}
+          floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
         /><br />
         <TextField
           floatingLabelText="Password"
           hintText="Password"
           type="password"
+          onChange={this.handleChangePassword.bind(this)}
+          errorText={this.state.passwordRaw}
+          floatingLabelStyle={styles.floatingLabelStyle}
+          floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
+          errorStyle={styles.errorLabelStyle}
         />
       </div>
     );
   }
 
+  handleChangeUsername() {
+    event.preventDefault();
+    const username = arguments[1]; // FIXME: not sure how else to grab it
+    this.props.onChangeUsername(username);
+  }
 
+  handleChangeEmail() {
+    event.preventDefault();
+    const email = arguments[1];
+    this.props.onChangeEmail(email);
+  }
+
+  handleChangePassword() {
+    event.preventDefault();
+    const password = arguments[1];
+    this.props.onChangePassword(password);
+
+    this.setState({passwordRaw: password});
+  }
+
+
+}
+
+RegisterContainer.propTypes = {
+  onChangeUsername: PropTypes.func.isRequired,
+  onChangeEmail: PropTypes.func.isRequired,
+  onChangePassword: PropTypes.func.isRequired,
 }
