@@ -1,8 +1,8 @@
 node_modules/
 .meteor/local/
 .meteor/dev_bundle/
-meteor_packages
 .DS_Store
 npm-debug.log
+meteor_packages
 .project
 .projects/SimpleVotingMachine/product/docs

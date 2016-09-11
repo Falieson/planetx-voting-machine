@@ -7,7 +7,9 @@ import { connect } from 'react-redux';
 import { submitBallotForCandidate } from '../actions/Ballot.js';
 
 // Components
-import SubmitBallotButton       from '../components/submitBallot/Button.jsx';
+import VoterRegisterForm          from '../components/voterRegister/Form.jsx';
+// import VoterRegisterForm          from '../components/voterRegister/Paper.jsx';
+import SubmitBallotButton         from '../components/submitBallot/Button.jsx';
 
 
 
@@ -18,7 +20,7 @@ export default class Ballot extends Tracker.Component {
     this.autorun(()=> {
       // Todo: Replace subscription to all ballots with subcsription to user's ballot
       //  we definitely do not want a subscription to all() ballots
-      
+
       this.subscribe('ballots');
     });
   }
@@ -37,12 +39,15 @@ export default class Ballot extends Tracker.Component {
     const candidateId = this.props.candidateId;
 
     return (
-      <SubmitBallotButton
-        candidateId   = {candidateId}
-        candidateName = {this.props.candidateName}
-        ready         = {this.props.readyForSubmission}
-        onSubmit      = {this.onSubmitBallot.bind(this, candidateId)}
-      />
+      <div>
+        <VoterRegisterForm />
+        <SubmitBallotButton
+          candidateId   = {candidateId}
+          candidateName = {this.props.candidateName}
+          ready         = {this.props.readyForSubmission}
+          onSubmit      = {this.onSubmitBallot.bind(this, candidateId)}
+        />
+      </div>
     );
   }
 

@@ -35,7 +35,7 @@ if( Meteor.isServer ){
     Ballots.remove();
     ballotAmount = Ballots.find().count();
     if(ballotAmount === 0 && debug) {
-      console.log(`GENERATING BALLOTS & CLEANUP: SUCCESFULL`);
+      console.log(`GENERATING BALLOTS & CLEANUP: SUCCESSFUL`);
     }
     else {
       console.log(`GENERATING BALLOTS & CLEANUP FAILED: ${ballotAmount} Ballots Remain`);

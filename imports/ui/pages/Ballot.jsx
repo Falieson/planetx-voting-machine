@@ -11,8 +11,7 @@ export default class MobileLayout extends Component {
   render() {
     // Mobile Landscape Layout specs
     const style = {
-      height: "100%",
-      maxWidth: "736px",
+      height: "100%"
     };
 
     return (

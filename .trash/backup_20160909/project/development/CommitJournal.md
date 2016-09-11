@@ -1,29 +1,19 @@
 # Simple Voting Machine
-## 2. User Accounts
-### 2.A) Account Registration UI & Dummy Header
-##### 2.A.1) Form UI and Info
-Version: `0.0.1.1`
-
+### 2.A) Submit Ballot
 Commit: `{this}`
 
-Branch: `votingMachine/simple/account`
+Branch: `voting_machine/simple-account`
 
-Message: `SVM 2.A.1) Create Dummy UI for Account Registration`
+Message: `SVM 2.A) Register User, Associate Ballot with ID, Create Header`
 
 Project:
-* `Dummy Form UI for Mobile Layout`
-* `Call to Action: Registration Features`
+* ``
 
 Notes:
-* `Using accounts-password package is after the UI is done`
-* `CommitJournal.md now has versions, third-level and up represent versions and update the package.json`
+* ``
 
-
-## 1. MVP Voting Machine
 ### 1.D) Submit Ballot
 ##### 1.D.2) Save Ballot and Vote in Database
-Version: `0.0.1`
-
 Commit: `#28f82a18`
 
 Branch: `voting_machine/simple`
@@ -38,11 +28,10 @@ Project:
 Notes:
 * `Securing ballot privacy, and Limiting ballot submissions is later`
 * `Tallying ballot totals is for a later commit`
-* `Updated documentation for releasing MVP - this completed branch`
 
 
 ##### 1.D.1) Redux: Handle Candidate Submit
-Commit: `#f1f743a1`
+Commit: `#c84285d5`
 
 Branch: `voting_machine/simple`
 
@@ -57,7 +46,7 @@ Notes:
 
 ### 1.C) Select Candidate
 ##### 1.C.2) Redux: Select Candidate
-Commit: `#98f9c7f2`
+Commit: `#1ba47635`
 
 Branch: `voting_machine/simple`
 
@@ -73,7 +62,7 @@ Notes:
 
 
 ##### 1.C.1) Simple UI
-Commit: `#3f1c5cef`
+Commit: `#fd8e7a82`
 
 Branch: `voting_machine/simple`
 
@@ -87,7 +76,7 @@ Notes:
 
 ### 1.B) List of Candidates
 ##### 1.B.2) Redux: Fetch Candidates
-Commit: `#4c823af1`
+Commit: `#4abd2120`
 
 Branch: `voting_machine/simple`
 
@@ -103,7 +92,7 @@ Notes:
 * `Upgraded to Meteor 1.4.1`
 
 ##### 1.B.1) Simple UI
-Commit: `#b3e26b62`
+Commit: `#a41681f7`
 
 Branch: `voting_machine/simple`
 

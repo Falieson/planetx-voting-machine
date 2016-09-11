@@ -8,10 +8,9 @@ Sign with Alias or Public Name and Add Comment
 Create Account with Login and Email Recovery to update later
 
 # Plan
-```
 0. Setup and Plan
-  A) Get a working base structure for Redux/Meteor
-  B) Laydown the plan in this commit
+- Get a working base structure for Redux/Meteor
+- Laydown the plan in this commit
 
 1. Simple Voting Machine
   A) Fixture Data for Top Candidates
@@ -31,16 +30,11 @@ Create Account with Login and Email Recovery to update later
     - DB: Save Ballot - Record Vote
 
 2. Record and Update Vote with a User Account
-  A) Registration Form UI and Header
-    1. UI for Registration and Form
-    2. Use transition to show UI when candidate is selected
-  B) Meteor Account API
-    1. Register User
-    2. Associate Ballot with UserId
-    3. Secure Ballot so only this.userId() can access it
-  C) Returning Users
-    1. Account SignIn
-    2. Restore and Update Ballot
+  A) Account Registration and Header
+  B) Associate Ballot with Account
+  C) Account SignIn
+  D) Ballot Update
+  E) Secure Ballot so only this.userId() can access it
 
 3. Tally Votes and Display Results
   A) Totals Collections
@@ -49,21 +43,16 @@ Create Account with Login and Email Recovery to update later
   D) Router to Results Page, Signin/Login Page
 
 4. Deploy to test server
-  A) Choosing a Host: Digital Ocean or Galaxy?
+  A) Choosing a Host: Digital Ocean
   B) MupX
   C) Setting up a Droplet
   D) DNS-Bind9, Nginx
   E) Link to Test Demo
 
-5. Update 1-4 with Ranked Voting Algorithm
+5. Update 1-5 with Ranked Voting Algorithm
   A) Select Candidate
   - Ranked Selector and Veto UI: Show Position and Point Value
   - Mobile First
     : select position => select from list of candidates
+
   B) Submit Ballot
-
-
-6. Responsive Design Layouts (grid)
-7. User Enhancements
-  A) IP Address Limit (2)
-```
