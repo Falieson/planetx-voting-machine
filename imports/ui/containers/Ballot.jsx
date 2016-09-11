@@ -1,7 +1,9 @@
 // Libraries - Imported
-import React, {Component, PropTypes} from 'react';
 import Tracker from 'tracker-component';
+import React, {Component, PropTypes} from 'react';
 import { connect } from 'react-redux';
+
+import ReactTransitionGroup from 'react-addons-transition-group';
 
 // Actions
 import { submitBallotForCandidate } from '../actions/Ballot.js';
@@ -37,14 +39,26 @@ export default class Ballot extends Tracker.Component {
     };
 
     const candidateId = this.props.candidateId;
+    const ballotReady = this.props.readyForSubmission;
+
+    // Correct way of only rendering 0-1 child component
+    // https://github.com/facebook/react/blob/master/docs/docs/10.1-animation.md
+    var FirstChild = React.createClass({
+      render: function() {
+        var children = React.Children.toArray(this.props.children);
+        return children[0] || null;
+      }
+    });
 
     return (
       <div>
-        <VoterRegisterForm />
+        <ReactTransitionGroup component={FirstChild}>
+          {ballotReady ? <VoterRegisterForm /> : null}
+        </ReactTransitionGroup>
         <SubmitBallotButton
           candidateId   = {candidateId}
           candidateName = {this.props.candidateName}
-          ready         = {this.props.readyForSubmission}
+          ready         = {ballotReady}
           onSubmit      = {this.onSubmitBallot.bind(this, candidateId)}
         />
       </div>

@@ -1,10 +1,26 @@
 # Simple Voting Machine
 ## 2. User Accounts
 ### 2.A) Account Registration UI & Dummy Header
+##### 2.A.2) Animate render when Candidate Selected
+Version: `0.0.1.2`
+
+Commit: `{this}`
+
+Branch: `votingMachine/simple/account`
+
+Message: `SVM 2.A.2) Animate render of Registration UI`
+
+Project:
+* `Updated RegForm from stateless component to react component`
+* `Single child ReactTransitionGroup api, instead of ReactCSSTransitionGroup`
+
+Notes:
+* [Correct way of only rendering 0-1 child component](https://github.com/facebook/react/blob/master/docs/docs/10.1-animation.md)
+
 ##### 2.A.1) Form UI and Info
 Version: `0.0.1.1`
 
-Commit: `{this}`
+Commit: `#98299a73`
 
 Branch: `votingMachine/simple/account`
 
