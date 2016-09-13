@@ -1,10 +1,31 @@
 # Simple Voting Machine
 ## 2. User Accounts
-### 2.B)  Meteor Account API
+### 2.B)  Create Account in DB
+##### 2.B.2) Create Account with Methods & Sign Ballot w/ UserId
+Version: `0.0.1.4`
+
+Commit: `{this}`
+
+Branch: `votingMachine/simple/account`
+
+Message: `SVM 2.B.2) Create New Account Meteor Method & update Ballot.CreatedBy`
+
+Project:
+* `Server side API for creating a user account`
+* `Explicit login of successfully created user`
+* `Attribute ballot to userId`
+
+Issue:
+`When completing last regForm field submitBallot/Button.jsx::ready toggles and removes focus from the field. There are other related symptoms where the UI is out-of-sync with the store, for example: `
+- NewAccount.jsx::handleCompletedForm requires .length>1 but ready is only toggled when the last field is .length>2.
+- similarly - removing all text should cause the button to disable, but it only disables after the text is removed, and then replaced with 1 character (b/c its not .length>1).
+- finally, it seems that the entire voterRegister/Form.jsx component is reset (the state returns to default, fields are reset).
+- FIXME: I'm preventing this problem from appearing to the user by overriding default values with props if they exist.
+
 ##### 2.B.1) New Account Info in Store
 Version: `0.0.1.3`
 
-Commit: `{this}`
+Commit: `#1da35aa1`
 
 Branch: `votingMachine/simple/account`
 

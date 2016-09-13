@@ -69,8 +69,8 @@ CandidatesListContainer.propTypes = {
   dispatch:     PropTypes.func.isRequired
 }
 
-function mapStoreToProps(state) {
-  const { Candidates } = state;
+function mapStoreToProps(store) {
+  const { Candidates } = store;
 
   const {
     items,

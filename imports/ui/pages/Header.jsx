@@ -8,6 +8,7 @@ import Input from 'material-ui/svg-icons/action/input';
 const Header = () => (
   <AppBar
     title="Voting Machine - U.S.A. 2016 Presedential Election"
+    showMenuIconButton={false}
     iconElementRight={
       <FlatButton
         label="Login"

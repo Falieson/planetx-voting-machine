@@ -6,7 +6,7 @@ import {
 export default function Ballot(state = {
   candidateId:        '',
   candidateName:      {},
-  readyForSubmission: false,
+  readyForSubmit: false,
   savingOptimisticly: false,
   saved:              false,
   error:              {},
@@ -19,7 +19,7 @@ export default function Ballot(state = {
         candidateId:          action.data._id,
         candidateName:        action.data.name,
 
-        readyForSubmission:   action.submitReady
+        readyForSubmit:       action.submitReady
       });
 
     case BALLOT_SUBMIT_OPTIMIST:
@@ -27,6 +27,7 @@ export default function Ballot(state = {
         candidateId:          action.candidateId,
 
         savingOptimisticly:   action.savingOptimisticly,
+        error:                action.error,
         errorMessage:         action.errorMessage,
         saved:                action.saved,
         lastUpdated:          action.updatedAt,
@@ -38,6 +39,7 @@ export default function Ballot(state = {
         candidateName:        action.data.name,
 
         savingOptimisticly:   action.savingOptimisticly,
+        error:                action.error,
         errorMessage:         action.errorMessage,
         saved:                action.saved,
         lastUpdated:          action.updatedAt,
@@ -47,6 +49,7 @@ export default function Ballot(state = {
       return Object.assign({}, state, {
 
         savingOptimisticly:   action.savingOptimisticly,
+        error:                action.error,
         errorMessage:         action.errorMessage,
         saved:                action.saved,
         lastUpdated:          action.updatedAt,

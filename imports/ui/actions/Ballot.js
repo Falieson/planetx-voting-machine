@@ -24,8 +24,13 @@ function updateBallot(data) {
   }
 }
 
+
 // # Submit Ballot (To DB - Remotely)
+// First, Create Account
 // 2 step submission - optimistic, and confirmation
+import { Meteor } from 'meteor/meteor';
+
+import submitInfoForNewAccount from './Account.js';
 import { Ballots }      from '../../api/ballots/collections.js';
 import { BallotsView }  from '../../api/ballots/views.js';
 import { insertBallot } from '../../api/ballots/methods.js';
@@ -34,25 +39,23 @@ export const BALLOT_SUBMIT_OPTIMIST   = 'BALLOT_SUBMIT_OPTIMIST';
 export const BALLOT_SUBMIT_SUCCESS    = 'BALLOT_SUBMIT_SUCCESS';
 export const BALLOT_SUBMIT_ERROR      = 'BALLOT_SUBMIT_ERROR';
 
-export function submitBallotForCandidate(candidateId) {
+export function submitBallotForCandidate(candidateId, userId) {
   return dispatch => {
-    // 1) Optimist
+    // II.A) Submit Ballot: Optimist
     dispatch(submitBallot(candidateId));
 
-    // 2) Actual
+    // II.B) Submit Ballot: Account
     // Create this DB Fetch and Views in the next commit
-    const userId = 'admin';     // TODO replace 'admin' with userId
-
     insertBallot.call({candidateId, createdBy: userId}, (error, result) => {
       if(error) {
         let message = '';
-        if(err.message && err.message.length > 0){
-          message = err.message;
+        if(error.message && error.message.length > 0){
+          message = error.message;
         }
         else {
           message = 'check error field';
         }
-        dispatch(ErrorBallotNotSaved(err, message));
+        dispatch(ErrorBallotNotSaved(error, message));
       }
       else {
         // result is the new record's mongoDb id;
@@ -63,14 +66,12 @@ export function submitBallotForCandidate(candidateId) {
         // Fetch the Candidate's name from the database
         const Candidate = CandidatesView.one(Ballot.candidateId);
         Ballot.name = Candidate.name;
-        
+
         dispatch(ballotSaved(Ballot));
       }
     });
-
   }
 }
-
 function submitBallot(id) {
   return {
     type:                 BALLOT_SUBMIT_OPTIMIST,

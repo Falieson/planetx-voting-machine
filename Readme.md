@@ -4,7 +4,7 @@ A template for building large scale applications with Meteor and Redux. Learn ho
 ## Goals
 This repo is the result of a lot of my research, frustration, and effort to build a reusable modern (ES6+) template for large scale application development. My goals were to:
 
-1. easily increase the # of contributors without EmberJS or another standards driven framework by having strong semantic naming conventions and consistent code formatting
+1. easily increase the # of contributors without EmberJS or another standards driven framework by having strong semantic naming conventions and consistent code formatting that's intuitive to read (thanks ES6 hoisting!)
 1. DRY and Dissolve the app structure as much as possible so, as the application grows its a natural consequence to want to group components into independent modules, but prior to Meteor 1.3 a lot of code for each module was separated between /client/ and /server/. Now its easy (if programmed properly) to refactor completed modules from /imports/ into /packages/ making the next step - splitting into microservices - much easier.
 
 ## Audience

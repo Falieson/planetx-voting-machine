@@ -20,17 +20,19 @@ import {orange500, blue500} from 'material-ui/styles/colors';
 
 
 export default class RegisterContainer extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+
+    const rawPass = this.props.password && this.props.password.length>0? this.props.password : '_';
 
     this.state = {
-      passwordRaw: ''
+      passwordRaw: rawPass
     };
   }
 
   render() {
     // the styling is a bit ugly but we'll fix it up for the final
-    const RegsiterContainerStyle = {
+    const containerStyle = {
       width: '100%',
       textAlign: 'center',
       display: 'block',
@@ -38,7 +40,7 @@ export default class RegisterContainer extends Component {
     };
 
     return (
-      <Paper style={RegsiterContainerStyle} zDepth={1}>
+      <Paper style={containerStyle} zDepth={1}>
         {this.renderCTA()}
         {this.renderFields()}
       </Paper>
@@ -94,19 +96,22 @@ export default class RegisterContainer extends Component {
         textAlign: 'center',
         display: 'inline-block',
         borderLeft: '1px dashed',
-        marginBottom: '2px'
+        marginBottom: '15px',
       },
       h1Style: {
         margin: '5px 0 0 0'
       }
     };
 
+
+    // Todo: Add a Show/Hide password checkbox over the end of the password field
     return (
       <div style={styles.containerStyle}>
         <h1 style={styles.h1Style}>Register</h1>
         <TextField
           floatingLabelText="Public Alias/Name"
           hintText="Username"
+          value={this.props.username}
           onChange={this.handleChangeUsername.bind(this)}
           floatingLabelStyle={styles.floatingLabelStyle}
           floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
@@ -114,6 +119,7 @@ export default class RegisterContainer extends Component {
         <TextField
           floatingLabelText="Email for Login/Recovery"
           hintText="Email Address"
+          value={this.props.email}
           onChange={this.handleChangeEmail.bind(this)}
           floatingLabelStyle={styles.floatingLabelStyle}
           floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
@@ -122,6 +128,7 @@ export default class RegisterContainer extends Component {
           floatingLabelText="Password"
           hintText="Password"
           type="password"
+          value={this.props.password}
           onChange={this.handleChangePassword.bind(this)}
           errorText={this.state.passwordRaw}
           floatingLabelStyle={styles.floatingLabelStyle}
@@ -149,14 +156,19 @@ export default class RegisterContainer extends Component {
     const password = arguments[1];
     this.props.onChangePassword(password);
 
-    this.setState({passwordRaw: password});
+    // putting in some default errorText keeps the UI from pushing around the submitButton
+    const rawPass = password.length>0? arguments[1]: '_';
+    this.setState({passwordRaw: rawPass});
   }
 
 
 }
 
 RegisterContainer.propTypes = {
+  username:         PropTypes.string.isRequired,
+  email:            PropTypes.string.isRequired,
+  password:         PropTypes.string.isRequired,
   onChangeUsername: PropTypes.func.isRequired,
-  onChangeEmail: PropTypes.func.isRequired,
+  onChangeEmail:    PropTypes.func.isRequired,
   onChangePassword: PropTypes.func.isRequired,
 }

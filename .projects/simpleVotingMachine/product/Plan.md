@@ -17,7 +17,6 @@ Create Account with Login and Email Recovery to update later
   A) Fixture Data for Top Candidates
     - db records, schema, validation
     - fixtureImages
-
   B) List Candidates
     - Candidate Card: Image and Label
     - List of Candidates
@@ -34,9 +33,8 @@ Create Account with Login and Email Recovery to update later
     - Use transition to show UI when candidate is selected
   B) Create Account in DB
     - Put account info in Store
-    - Register User
-    - Associate Ballot with UserId
-    - Secure Ballot so only this.userId() can access it
+    - Register User && Associate Ballot with UserId
+    - InfoSec: only this.userId can access ballot, remove password details from store on success
     - Require & Validate Fields
   C) Returning Users
     - Account SignIn

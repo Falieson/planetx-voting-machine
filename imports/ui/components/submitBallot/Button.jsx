@@ -33,8 +33,7 @@ export default class SubmitBallotButton extends Component {
 }
 
 SubmitBallotButton.propTypes = {
-  candidateId:    PropTypes.string,
   candidateName:  PropTypes.object,
   ready:          PropTypes.bool,
-  onSubmit: PropTypes.func.isRequired,
+  onSubmit:       PropTypes.func.isRequired,
 }
