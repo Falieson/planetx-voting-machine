@@ -83,7 +83,7 @@ export const TaskListViews = {find: {all, one, tasksFor}};
 //         { owner: this && this.userId? this.userId : undefined },
 //       ],
 //     };
-//   } else if(type == "one") {
+//   } else if(type === "one") {
 //     query = {
 //       options,
 //       $or: [

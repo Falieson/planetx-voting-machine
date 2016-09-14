@@ -1,11 +1,11 @@
 # Goals
-List of Candidates
-Add a Candidate
-Choose Top 3 Candidates (1-3 rank)
-Choose Worst Candidate (1)
-Save/Update Selected Votes
-Sign with Alias or Public Name and Add Comment
-Create Account with Login and Email Recovery to update later
+- List of Candidates
+- Add a Candidate
+- Choose Top 3 Candidates (1-3 rank)
+- Choose Worst Candidate (1)
+- Save/Update Selected Votes
+- Sign with Alias or Public Name and Add Comment
+- Create Account with Login and Email Recovery to update later
 
 # Plan
 ```
@@ -35,9 +35,10 @@ Create Account with Login and Email Recovery to update later
     - Put account info in Store
     - Register User && Associate Ballot with UserId
     - InfoSec: only this.userId can access ballot, remove password details from store on success
-    - Require & Validate Fields
+    - Validate Fields
   C) Returning Users
-    - Account SignIn
+    - Router to Login Page
+    - Account SignIn Form
     - Restore and Update Ballot
 
 3. Tally Votes and Display Results

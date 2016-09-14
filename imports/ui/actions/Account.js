@@ -1,8 +1,8 @@
 // ACCOUNT - UPDATE & SUBMIT
 // # Update Account (Locally)
-export const ACCOUNT_UPDATE_USERNAME  = 'ACCOUNT_UPDATE_USERNAME';
-export const ACCOUNT_UPDATE_EMAIL     = 'ACCOUNT_UPDATE_EMAIL';
-export const ACCOUNT_UPDATE_PASSWORD  = 'ACCOUNT_UPDATE_PASSWORD';
+export const ACCOUNT_UPDATE_USERNAME          = 'ACCOUNT_UPDATE_USERNAME';
+export const ACCOUNT_UPDATE_EMAIL             = 'ACCOUNT_UPDATE_EMAIL';
+export const ACCOUNT_UPDATE_PASSWORD          = 'ACCOUNT_UPDATE_PASSWORD';
 
 export function updateAccountUsername(username) {
   return dispatch => {
@@ -12,8 +12,9 @@ export function updateAccountUsername(username) {
 function updateUsername(username) {
   return {
     type:       ACCOUNT_UPDATE_USERNAME,
+    username,
+    valid:      true,
     updatedAt:  Date.now(),
-    username
   }
 }
 export function updateAccountEmail(email) {
@@ -24,8 +25,9 @@ export function updateAccountEmail(email) {
 function updateEmail(email) {
   return {
     type:       ACCOUNT_UPDATE_EMAIL,
+    email,
+    valid:      true,
     updatedAt:  Date.now(),
-    email
   }
 }
 export function updateAccountPassword(password) {
@@ -36,38 +38,54 @@ export function updateAccountPassword(password) {
 function updatePassword(password) {
   return {
     type:       ACCOUNT_UPDATE_PASSWORD,
+    password,
+    valid:      true,
     updatedAt:  Date.now(),
-    password
   }
 }
 
-// Account Registration Form is Ready
-export const ACCOUNT_FIELDS_VALID      = 'ACCOUNT_FIELDS_VALID';
-export const ACCOUNT_FIELDS_NOT_VALID  = 'ACCOUNT_FIELDS_NOT_VALID';
-export function updateAccountReadyForSubmit(password) {
+// Account Registration Form Fields Invalid
+export const ACCOUNT_UPDATE_USERNAME_INVALID  = 'ACCOUNT_UPDATE_USERNAME_INVALID';
+export const ACCOUNT_UPDATE_EMAIL_INVALID     = 'ACCOUNT_UPDATE_EMAIL_INVALID';
+export const ACCOUNT_UPDATE_PASSWORD_INVALID  = 'ACCOUNT_UPDATE_PASSWORD_INVALID';
+export function updateAccountUsernameInvalid() {
   return dispatch => {
-    dispatch( updateAccountReady() );
+    dispatch( invalidUsername() );
   }
 }
-function updateAccountReady() {
+function invalidUsername() {
   return {
-    type:       ACCOUNT_FIELDS_VALID,
-    updatedAt:  Date.now(),
-    submitReady: true
+    type:         ACCOUNT_UPDATE_USERNAME_INVALID,
+    valid:        false,
+    updatedAt:    Date.now(),
   }
 }
-export function updateAccountNotReadyForSubmit() {
+export function updateAccountEmailInvalid() {
   return dispatch => {
-    dispatch( updateAccountNotReady() );
+    dispatch( invalidEmail() );
   }
 }
-function updateAccountNotReady(password) {
+function invalidEmail() {
   return {
-    type:       ACCOUNT_FIELDS_NOT_VALID,
-    updatedAt:  Date.now(),
-    submitReady: false
+    type:         ACCOUNT_UPDATE_EMAIL_INVALID,
+    valid:        false,
+    updatedAt:    Date.now(),
   }
 }
+export function updateAccountPasswordInvalid() {
+  return dispatch => {
+    dispatch( invalidPassword() );
+  }
+}
+function invalidPassword() {
+  return {
+    type:         ACCOUNT_UPDATE_PASSWORD_INVALID,
+    valid:        false,
+    updatedAt:    Date.now(),
+  }
+}
+
+
 
 // # Create Account (To DB - Remotely)
 import {newAccount} from '../../api/accounts/methods.js';

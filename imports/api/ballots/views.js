@@ -40,7 +40,7 @@ const all = (filters)=> {
   } else {
     const results= Ballots.find(query, publicFields);
 
-    if(debug == 2){
+    if(debug === 2){
       console.log(`Publishing All (${results.count()}) Ballots: `, results.fetch());
     }
 
@@ -57,7 +57,7 @@ const one = (target, filters) => {
   if(Meteor.isClient){
     const result = Ballots.findOne(options, publicFields);
 
-    if(debug == 2){
+    if(debug === 2){
       console.log(`Fetched Ballot[${target}]:  `, result);
     }
 
@@ -97,7 +97,7 @@ function mine() {
 
     const result =  Ballots.find(options, publicFields)
 
-    if(debug == 2){
+    if(debug === 2){
       console.log(`Publishing Ballot[${target}]:  `, result);
     }
 

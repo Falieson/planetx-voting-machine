@@ -39,10 +39,7 @@ class MobileLayout extends Tracker.Component {
       <Paper style={style} zDepth={1} rounded={false}>
         <CandidatesListContainer />
         {this.state.loggedOut? this.renderVoterRegistration() : null}
-        <BallotSubmitContainer
-          accountFieldsCompleted  = {this.props.accountReady}
-          candidateSelected       = {this.props.ballotReady}
-        />
+        <BallotSubmitContainer />
       </Paper>
     );
   }
@@ -50,9 +47,9 @@ class MobileLayout extends Tracker.Component {
   renderVoterRegistration() {
     // Correct way of only rendering 0-1 child component
     // https://github.com/facebook/react/blob/master/docs/docs/10.1-animation.md
-    var FirstChild = React.createClass({
+    const FirstChild = React.createClass({
       render: function() {
-        var children = React.Children.toArray(this.props.children);
+        const children = React.Children.toArray(this.props.children);
         return children[0] || null;
       }
     });
@@ -69,9 +66,8 @@ function mapStoreToProps(store) {
   const { Ballot, Account } = store;
 
   const ballotReady = Ballot.readyForSubmit;
-  const accountReady = Account.readyForSubmit;
 
-  return { ballotReady, accountReady };
+  return { ballotReady };
 }
 
 export default connect(mapStoreToProps)(MobileLayout);

@@ -1,10 +1,29 @@
 # Simple Voting Machine
 ## 2. User Accounts
 ### 2.B)  Create Account in DB
+##### 2.B.4) Require & Validate Fields
+Version: `0.0.1.6`
+
+Commit: `{this}`
+
+Branch: `votingMachine/simple/account`
+
+Message: `SVM 2.B.4) Validate Account Registration Fields`
+
+Project:
+* `AccountSubmitReady now depends on validatedField props rather than a handleCompletedForm() checker that then dispatches and ends up flooding the store`
+
+Notes:
+* `Some helpful people in the redux discord chatroom suggested to fix [ISSUE] 2.B.2 by using the reselect library which would only cause an update to submitReady if props value value actually changes. I will probably give this a shot later when I'm trying to optimize for performance. Everything works pretty well now!`
+
+Issues:
+* `[CLOSED] 2.B.2 no more issues now that handleCompletedForm() is replaced`
+* `[OPEN] 2.B.3) submitButton doesn't update and tries to make account even when logged in`
+
 ##### 2.B.3) InfoSec: remove PW from Store and restrict ballot subscription
 Version: `0.0.1.5`
 
-Commit: `{this}`
+Commit: `#fe90320f`
 
 Branch: `votingMachine/simple/account`
 

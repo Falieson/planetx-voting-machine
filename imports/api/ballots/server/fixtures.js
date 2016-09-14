@@ -17,7 +17,7 @@ if( Meteor.isServer ){
     for(var i=0; i<=newBallotsAmount; i++) {
       const ballot = Factory.build('ballot');
 
-      if(debug == 2){console.log(`BALLOT[${i}]`, ballot);}
+      if(debug === 2){console.log(`BALLOT[${i}]`, ballot);}
 
       newBallots.push[ballot];
     }
