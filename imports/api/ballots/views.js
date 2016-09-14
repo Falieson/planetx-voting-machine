@@ -33,7 +33,7 @@ const all = (filters)=> {
     const results = Ballots.find(query, publicFields).fetch();
 
     if(debug){
-      console.log(`Publishing Ballots: ${results.length}`);
+      console.log(`Fetching Ballots: ${results.length}`);
     }
 
     return results;
@@ -67,4 +67,42 @@ const one = (target, filters) => {
   }
 };
 
-export const BallotsView = {all, one};
+function mine() {
+  if(Meteor.isClient){
+    if(debug){
+      console.log("[client] ITEMVIEW: mine");
+    }
+
+    const target = Meteor.userId();
+    const options = {createdBy: target};
+
+    const result = Ballots.findOne(options, publicFields);
+
+    if(debug){
+      console.log(`Fetched Ballot[${target}]:  `, result);
+    }
+
+    return result;
+  } else if(Meteor.isServer) {
+    if(debug){
+      console.log("[server] ITEMVIEW: mine");
+    }
+
+    const target = this.userId;
+    if(debug){
+      console.log("CLIENT USERID: ", target);
+    }
+
+    const options = {createdBy: target};
+
+    const result =  Ballots.find(options, publicFields)
+
+    if(debug == 2){
+      console.log(`Publishing Ballot[${target}]:  `, result);
+    }
+
+    return result;
+  }
+}
+
+export const BallotsView = {all, one, mine};

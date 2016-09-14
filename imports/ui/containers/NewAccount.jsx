@@ -1,6 +1,5 @@
 // Libraries - Imported
 import { Random } from 'meteor/random';
-import Tracker from 'tracker-component';
 import { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 
@@ -15,7 +14,7 @@ import VoterRegisterForm  from '../components/voterRegister/Form.jsx';
 
 // NewAccount Container - handle registration form
 // Container: interacts with store and db
-export default class NewAccountContainer extends Tracker.Component {
+class NewAccountContainer extends Component {
   render() {
     return (
       <VoterRegisterForm

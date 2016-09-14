@@ -1,5 +1,6 @@
 // Libraries - Imported
 import { Meteor } from 'meteor/meteor';
+import Tracker from 'tracker-component';
 import { Component } from 'react';
 import { connect } from 'react-redux';
 
@@ -14,7 +15,20 @@ import NewAccountContainer      from '../containers/NewAccount.jsx';
 import BallotSubmitContainer    from '../containers/BallotSubmit.jsx';
 
 // Ballot Page - list of candidates, select candidate, register, and vote
-class MobileLayout extends Component {
+class MobileLayout extends Tracker.Component {
+  constructor(){
+    super();
+
+    this.state = {
+      loggedOut: false,
+    }
+  }
+  componentWillMount() {
+    this.autorun(()=> {
+      this.setState({loggedOut: Meteor.userId()? false:true})
+    });
+  }
+
   render() {
     // Mobile Landscape Layout specs
     const style = {
@@ -24,7 +38,7 @@ class MobileLayout extends Component {
     return (
       <Paper style={style} zDepth={1} rounded={false}>
         <CandidatesListContainer />
-        {this.renderVoterRegistration()}
+        {this.state.loggedOut? this.renderVoterRegistration() : null}
         <BallotSubmitContainer
           accountFieldsCompleted  = {this.props.accountReady}
           candidateSelected       = {this.props.ballotReady}

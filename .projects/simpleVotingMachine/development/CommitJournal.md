@@ -1,10 +1,31 @@
 # Simple Voting Machine
 ## 2. User Accounts
 ### 2.B)  Create Account in DB
+##### 2.B.3) InfoSec: remove PW from Store and restrict ballot subscription
+Version: `0.0.1.5`
+
+Commit: `{this}`
+
+Branch: `votingMachine/simple/account`
+
+Message: `SVM 2.B.3) Update Ballot pub/sub, Create Ballot fetch, Remove pass Store`
+
+Project:
+* `Ballot view restricted to this.userId/Meteor.userId()`
+* `Remove password from store on success`
+* `Show Reg Form when user not logged in`
+
+Notes:
+* `Removed logIn button from header for now since it's not acting appropriately distracts from the regForm reacting to login state`
+
+Issues:
+* `Now that we have a user created, any further submitButton clicks will still try to create a user, will fix this in ### 2.C) Returning Users`
+* `[OPEN] 2.B.2) Ballot.jsx unexpectedly re-renders renderVoterRegistration()`
+
 ##### 2.B.2) Create Account with Methods & Sign Ballot w/ UserId
 Version: `0.0.1.4`
 
-Commit: `{this}`
+Commit: `#d2a337f8`
 
 Branch: `votingMachine/simple/account`
 
@@ -14,6 +35,9 @@ Project:
 * `Server side API for creating a user account`
 * `Explicit login of successfully created user`
 * `Attribute ballot to userId`
+
+Notes:
+* `Removed menu button from header for now since it doesn't do anything yet`
 
 Issue:
 `When completing last regForm field submitBallot/Button.jsx::ready toggles and removes focus from the field. There are other related symptoms where the UI is out-of-sync with the store, for example: `

@@ -1,4 +1,5 @@
 // Libraries - Imported
+import { Meteor } from 'meteor/meteor';
 import Tracker from 'tracker-component';
 import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
@@ -10,16 +11,18 @@ import {submitVoterRegistrationThenBallot} from '../actions/Account.js';
 import SubmitBallotButton         from '../components/submitBallot/Button.jsx';
 
 
-
 // Ballot Container - Show Ballot Submit Button
 // Container: interacts with store and db
 export default class BallotSubmitContainer extends Tracker.Component {
   componentWillMount() {
     this.autorun(()=> {
-      // Todo: Replace subscription to all ballots with subcsription to user's ballot
-      //  we definitely do not want a subscription to all() ballots
-
-      this.subscribe('ballots');
+      if(Meteor.userId()){
+        // console.log("USER: Is Logged In");
+        this.subscribe('myBallot');
+      }
+      else {
+        // console.log("USER: Not Logged In");
+      }
     });
   }
 

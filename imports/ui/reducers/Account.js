@@ -59,6 +59,7 @@ export default function Account(state = {
     case ACCOUNT_CREATE_SUCCESS:
       return Object.assign({}, state, {
         userId:               action.userId,
+        password:             action.password,
 
         savingOptimisticly:   action.savingOptimisticly,
         error:                action.error,

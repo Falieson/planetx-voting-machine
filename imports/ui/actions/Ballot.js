@@ -1,3 +1,5 @@
+const debug = false;
+
 // BALLOT - UPDATE & SUBMIT
 // # Update Ballot (Locally)
 import { CandidatesView } from '../../api/candidates/views.js';
@@ -33,7 +35,7 @@ import { Meteor } from 'meteor/meteor';
 import submitInfoForNewAccount from './Account.js';
 import { Ballots }      from '../../api/ballots/collections.js';
 import { BallotsView }  from '../../api/ballots/views.js';
-import { insertBallot } from '../../api/ballots/methods.js';
+import { insertBallot, fetchBallot } from '../../api/ballots/methods.js';
 
 export const BALLOT_SUBMIT_OPTIMIST   = 'BALLOT_SUBMIT_OPTIMIST';
 export const BALLOT_SUBMIT_SUCCESS    = 'BALLOT_SUBMIT_SUCCESS';
@@ -45,8 +47,7 @@ export function submitBallotForCandidate(candidateId, userId) {
     dispatch(submitBallot(candidateId));
 
     // II.B) Submit Ballot: Account
-    // Create this DB Fetch and Views in the next commit
-    insertBallot.call({candidateId, createdBy: userId}, (error, result) => {
+    insertBallot.call({candidateId, createdBy: userId}, function(error, result) {
       if(error) {
         let message = '';
         if(error.message && error.message.length > 0){
@@ -60,14 +61,27 @@ export function submitBallotForCandidate(candidateId, userId) {
       else {
         // result is the new record's mongoDb id;
 
-        // When result is available, subscription('ballot') will make the following code work but a secure meteor Fetch method would bypass the pub/sub system and deliver it directly wherever you want to assign it.
-        let Ballot = BallotsView.one(result);
+        // Explanation in /.projects/simpleVotingMachine/tutorial/Commit_2B3.md
+        Meteor.call('ballots.fetch', function(error, result) {
+          if(error){
+            console.log(`[error] fetchMyBallot: `, error);
 
-        // Fetch the Candidate's name from the database
-        const Candidate = CandidatesView.one(Ballot.candidateId);
-        Ballot.name = Candidate.name;
+            dispatch(ErrorBallotNotSaved(error, message));
+          }
+          else {
+            let Ballot = result;
 
-        dispatch(ballotSaved(Ballot));
+            if(debug){
+              console.log(`NEW_BALLOT[${result}]: `, Ballot);
+            }
+
+            // Fetch the Candidate's name from the database
+            const Candidate = CandidatesView.one(Ballot.candidateId);
+            Ballot.name = Candidate.name;
+
+            dispatch(ballotSaved(Ballot));
+          }
+        });
       }
     });
   }

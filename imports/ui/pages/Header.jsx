@@ -9,14 +9,16 @@ const Header = () => (
   <AppBar
     title="Voting Machine - U.S.A. 2016 Presedential Election"
     showMenuIconButton={false}
-    iconElementRight={
-      <FlatButton
-        label="Login"
-        labelPosition="before"
-        icon={<Input />}
-      />
-    }
   />
 );
+// NOTE: will re-add this when component responds to logged-in-out state
+// iconElementRight={
+//   <FlatButton
+//     label="Login"
+//     labelPosition="before"
+//     icon={<Input />}
+//   />
+//   }
+
 
 export default Header;

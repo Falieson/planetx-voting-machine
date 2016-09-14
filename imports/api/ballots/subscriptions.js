@@ -9,6 +9,7 @@
 import { Meteor } from 'meteor/meteor';
 import { collectionsSubscribe } from '../helpers/subscriptions.js'
 
-const all = (filters)=> collectionsSubscribe('ballots', filters);
+// const all = (filters)=> collectionsSubscribe('ballots', filters);
+const mine = ()=> collectionsSubscribe('myBallot');
 
-export const BallotsSubscription =  all;
+export const BallotsSubscription =  mine;

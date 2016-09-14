@@ -120,6 +120,7 @@ function newAccountSaved(userId) {
     type:                 ACCOUNT_CREATE_SUCCESS,
     updatedAt:            Date.now(),
     userId:               userId,
+    password:             '',
     error:                {},
     errorMessage:         '',
     savingOptimisticly:   false,
