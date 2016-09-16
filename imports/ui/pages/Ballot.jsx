@@ -15,7 +15,9 @@ import NewAccountContainer      from '../containers/NewAccount.jsx';
 import BallotSubmitContainer    from '../containers/BallotSubmit.jsx';
 
 // Ballot Page - list of candidates, select candidate, register, and vote
-class MobileLayout extends Tracker.Component {
+// <BallotPage layout="landscape" deviceType="mobile" />
+
+class BallotPage extends Tracker.Component {
   constructor(){
     super();
 
@@ -70,4 +72,4 @@ function mapStoreToProps(store) {
   return { ballotReady };
 }
 
-export default connect(mapStoreToProps)(MobileLayout);
+export default connect(mapStoreToProps)(BallotPage);

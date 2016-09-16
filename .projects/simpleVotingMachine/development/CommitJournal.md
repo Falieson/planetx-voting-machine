@@ -1,10 +1,30 @@
 # Simple Voting Machine
 ## 2. User Accounts
+### 2.C)  Returning Users
+##### 2.C.1) Router to Dummy Login
+Version: `0.0.1.7`
+
+Commit: `{this}`
+
+Branch: `votingMachine/simple/account`
+
+Message: `SVM 2.C.1) Add Router Package and Dummy Login Page`
+
+Project:
+* `PaperSample in .trash has been used a couple times already for dummy UI commits, so keeping it there going forward`
+
+Notes:
+* `We could build some animated UI that drops the login form down from the button but when building for mobile its best to have a dedicated page`
+
+Issues:
+* `[NEW] 2.C.1) (minor issue) client/main.jsx should load the renderRoutes via startup/client/index.js but having an issue passing the function properly`
+* `[OPEN] 2.B.3) submitButton doesn't update and tries to make account even when logged in`
+
 ### 2.B)  Create Account in DB
 ##### 2.B.4) Require & Validate Fields
 Version: `0.0.1.6`
 
-Commit: `{this}`
+Commit: `#23706a8a`
 
 Branch: `votingMachine/simple/account`
 

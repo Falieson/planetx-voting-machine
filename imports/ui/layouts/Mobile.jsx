@@ -14,9 +14,8 @@ export default class MobileLayout extends Component {
     return (
       <div>
         <Header />
-        <BallotPage />
+        {this.props.children}
       </div>
-      // <BallotPage layout="landscape" deviceType="mobile" />
     );
   }
 }

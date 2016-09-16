@@ -1,24 +1,34 @@
-import React from 'react';
+// Libraries: React
+import React        from 'react';
+import { Link }     from 'react-router'
 
-import AppBar from 'material-ui/AppBar';
-import FlatButton from 'material-ui/FlatButton';
-import IconButton from 'material-ui/IconButton';
-import Input from 'material-ui/svg-icons/action/input';
+//  UI Components
+import AppBar       from 'material-ui/AppBar';
+import FlatButton   from 'material-ui/FlatButton';
+import IconButton   from 'material-ui/IconButton';
+import Input        from 'material-ui/svg-icons/action/input';
+
+
+const Title = (
+  <Link to='/'>
+    Voting Machine - U.S.A. 2016 Presedential Election
+  </Link>
+);
 
 const Header = () => (
   <AppBar
-    title="Voting Machine - U.S.A. 2016 Presedential Election"
+    title       = {Title}
     showMenuIconButton={false}
+    iconElementRight={
+      <FlatButton
+        style={{color: 'white'}}
+        href="/login/"
+        label="Login"
+        labelPosition="before"
+        icon={<Input />}
+      />
+    }
   />
 );
-// NOTE: will re-add this when component responds to logged-in-out state
-// iconElementRight={
-//   <FlatButton
-//     label="Login"
-//     labelPosition="before"
-//     icon={<Input />}
-//   />
-//   }
-
 
 export default Header;

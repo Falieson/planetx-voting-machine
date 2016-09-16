@@ -12,7 +12,7 @@ export default class App extends Component {
   render() {
     return (
       <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
-        <MobileLayout />
+        <MobileLayout children={this.props.children}/>
       </MuiThemeProvider>
     );
   }

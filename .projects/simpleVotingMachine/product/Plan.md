@@ -9,43 +9,25 @@
 
 # Plan
 ```
-0. Setup and Plan
-  A) Get a working base structure for Redux/Meteor
-  B) Laydown the plan in this commit
-
-1. Simple Voting Machine
-  A) Fixture Data for Top Candidates
-    - db records, schema, validation
-    - fixtureImages
-  B) List Candidates
-    - Candidate Card: Image and Label
-    - List of Candidates
-  C) Select Candidate
-    - Component: (**CTA**) Vote for Selected Candidate
-    - Redux: HandleCandidateSelection
-  D) Submit Ballot
-    - Redux: HandleCandidateSubmission
-    - DB: Save Ballot - Record Vote
-
 2. Record and Update Vote with a User Account
   A) Registration Form UI and Header
-    - UI for Registration and Form
-    - Use transition to show UI when candidate is selected
+    [x] UI for Registration and Form
+    [x] Use transition to show UI when candidate is selected
   B) Create Account in DB
-    - Put account info in Store
-    - Register User && Associate Ballot with UserId
-    - InfoSec: only this.userId can access ballot, remove password details from store on success
-    - Validate Fields
+    [x] Put account info in Store
+    [x] Register User && Associate Ballot with UserId
+    [x] InfoSec: only this.userId can access ballot, remove password details from store on success
+    [x] Validate Fields
   C) Returning Users
-    - Router to Login Page
-    - Account SignIn Form
-    - Restore and Update Ballot
+    [x] Router to Login Page
+    [ ] Account Login Form
+    [ ] Restore and Update Ballot
 
 3. Tally Votes and Display Results
   A) Totals Collections
   B) Bar Graph Votes in “Today’s” Daily Battle
   C) Line Graph Votes cumulatively per day
-  D) Router to Results Page, Signin/Login Page
+  D) Router to Results Page, Login Page
 
 4. Deploy to test server
   A) Choosing a Host: Digital Ocean or Galaxy?
@@ -65,4 +47,25 @@
 6. Responsive Design Layouts (grid)
 7. User Enhancements
   A) IP Address Limit (2)
+```
+
+# Completed Plan
+```
+0. Setup and Plan
+  A) Get a working base structure for Redux/Meteor
+  B) Laydown the plan in this commit
+
+1. Simple Voting Machine
+  A) Fixture Data for Top Candidates
+    - db records, schema, validation
+    - fixtureImages
+  B) List Candidates
+    - Candidate Card: Image and Label
+    - List of Candidates
+  C) Select Candidate
+    - Component: (**CTA**) Vote for Selected Candidate
+    - Redux: HandleCandidateSelection
+  D) Submit Ballot
+    - Redux: HandleCandidateSubmission
+    - DB: Save Ballot - Record Vote
 ```
