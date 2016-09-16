@@ -4,8 +4,8 @@ import { Router, Route, browserHistory, IndexRoute } from 'react-router';
 
 // route components
 import App        from '../../ui/App.jsx';
-import BallotPage  from '../../ui/pages/Ballot.jsx';
-import LoginPage  from '../../../.trash/PaperSample.jsx';
+import BallotPage from '../../ui/pages/Ballot.jsx';
+import LoginPage  from '../../ui/pages/AuthLogin.jsx';
 
 export const renderRoutes = () => (
   <Router history={browserHistory}>

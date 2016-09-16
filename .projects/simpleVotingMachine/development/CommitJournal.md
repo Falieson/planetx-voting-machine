@@ -1,14 +1,30 @@
 # Simple Voting Machine
 ## 2. User Accounts
 ### 2.C)  Returning Users
-##### 2.C.1) Router to Dummy Login
-Version: `0.0.1.7`
+##### 2.C.2) Create Login Form
+Version: `0.0.1.8`
 
 Commit: `{this}`
 
 Branch: `votingMachine/simple/account`
 
-Message: `SVM 2.C.1) Add Router Package and Dummy Login Page`
+Message: `SVM 2.C.2) Create Login Form`
+
+Project:
+* `accountLogin inputTextField on enter submits form, but its a bit more complicated to make the accountCreateAndBallotSubmit work on pressing enter`
+
+Issues:
+* `[OPEN] 2.C.1) (minor issue) client/main.jsx should load the renderRoutes via startup/client/index.js but having an issue passing the function properly`
+* `[OPEN] 2.B.3) submitButton doesn't update and tries to make account even when logged in`
+
+##### 2.C.1) Router to Dummy Login
+Version: `0.0.1.7`
+
+Commit: `#fef5a5ac`
+
+Branch: `votingMachine/simple/account`
+
+Message: `SVM 2.C.1) Install and Setup React-Router and Dummy Login Page`
 
 Project:
 * `PaperSample in .trash has been used a couple times already for dummy UI commits, so keeping it there going forward`

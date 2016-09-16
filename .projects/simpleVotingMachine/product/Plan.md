@@ -20,8 +20,13 @@
     [x] Validate Fields
   C) Returning Users
     [x] Router to Login Page
-    [ ] Account Login Form
+    [x] Account Login Form
     [ ] Restore and Update Ballot
+  D) Handle Errors / Feedback
+    [ ] Account Create Errors
+    [ ] Account Login Errors
+    [ ] Login/Logout Success
+    [ ] Ballot Submit Success
 
 3. Tally Votes and Display Results
   A) Totals Collections

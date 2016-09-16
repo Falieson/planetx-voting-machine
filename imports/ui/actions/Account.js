@@ -88,6 +88,7 @@ function invalidPassword() {
 
 
 // # Create Account (To DB - Remotely)
+import { Meteor } from 'meteor/meteor';
 import {newAccount} from '../../api/accounts/methods.js';
 import {submitBallotForCandidate}  from './Ballot.js';
 
