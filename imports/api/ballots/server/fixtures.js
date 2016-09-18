@@ -6,6 +6,8 @@ import { insertBallot }  from '../methods.js';
 import '../factories.js'; // #Factory.build('ballot')
 
 import { BallotsTotalAbsolute } from '../../ballotsTotalAbsolute/collections.js';
+import { BallotsTotalDaily } from '../../ballotsTotalDaily/collections.js';
+
 
 
 if( Meteor.isServer ){
@@ -43,13 +45,24 @@ if( Meteor.isServer ){
     ballotAmount = Ballots.find().count();
     if(ballotAmount === 0) {
       if(debug) console.log(`GENERATING BALLOTS & CLEANUP: SUCCESSFUL`);
+
+      // BALLOTS ABSOLUTE TOTAL
       const totalsAbsolute = BallotsTotalAbsolute.find().fetch();
 
       _.each(totalsAbsolute, (candidateTotal)=> {
         BallotsTotalAbsolute.update(candidateTotal._id, {$set: {votes: 0}});
       });
 
-      if(debug) console.log(`BALLOT TOTALS CLEANUP: FINISHED`);
+      if(debug) console.log(`BALLOT ABSOLUTE TOTALS CLEANUP: FINISHED`);
+
+      // BALLOTS DAILY TOTAL
+      const totalsDaily = BallotsTotalDaily.find().fetch();
+
+      _.each(totalsDaily, (candidateTotal)=> {
+        BallotsTotalDaily.update(candidateTotal._id, {$set: {votes: 0}});
+      });
+
+      if(debug) console.log(`BALLOT DAILY TOTALS CLEANUP: FINISHED`);
     }
     else {
       if(debug) console.log(`GENERATING BALLOTS & CLEANUP FAILED: ${ballotAmount} Ballots Remain`);

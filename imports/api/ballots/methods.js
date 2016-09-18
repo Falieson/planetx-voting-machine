@@ -10,7 +10,14 @@ import {
   incrBallotTotalAbsolute, decrBallotTotalAbsolute
 } from '../ballotsTotalAbsolute/methods.js';
 
+import {
+  incrBallotTotalDaily, decrBallotTotalDaily
+} from '../ballotsTotalDaily/methods.js';
+
 import { daysBeforeElection } from '../../lib/settings.js';
+import { eurodate }           from '../../lib/date.js'
+
+const today = eurodate();
 
 export const insertBallot = new ValidatedMethod({
   name: 'ballots.insert',
@@ -19,10 +26,9 @@ export const insertBallot = new ValidatedMethod({
     candidateId:          {type: String },
     createdBy:            {type: String, optional: true },
   }).validator(),
-  run({
-    candidateId, createdBy
-  }) {
+  run({ candidateId, createdBy }) {
     incrBallotTotalAbsolute.call({candidateId});
+    incrBallotTotalDaily.call({candidateId, _day: today});
 
     return Ballots.insert({
       candidateId,
@@ -39,12 +45,13 @@ export const updateBallot = new ValidatedMethod({
     _id:                  {type: String, optional: true },
     candidateId:          {type: String },
   }).validator(),
-  run({
-    candidateId
-  }) {
+  run({ candidateId }) {
     const oldCandidateId = Ballots.findOne({createdBy: this.userId}).candidateId;
     decrBallotTotalAbsolute.call({candidateId: oldCandidateId});
     incrBallotTotalAbsolute.call({candidateId});
+    
+    decrBallotTotalDaily.call({candidateId: oldCandidateId, _day: today});
+    incrBallotTotalDaily.call({candidateId, _day: today});
 
     return Ballots.update(
       {createdBy: this.userId},

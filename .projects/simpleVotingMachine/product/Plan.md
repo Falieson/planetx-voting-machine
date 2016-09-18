@@ -12,7 +12,7 @@
 3. Tally Votes and Display Results
   A) Totals Collections
     [x] BallotTotalsAbsolute
-    [ ] BallotTotalsDaily
+    [x] BallotTotalsDaily
   B) Bar Graph Votes in “Today’s” Daily Battle
   C) Line Graph Votes cumulatively per day
 

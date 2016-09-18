@@ -1,10 +1,22 @@
 # Simple Voting Machine
 ## 3. Tally Ballots and Display Results
 ### 3.A) Totals Collections
+##### 3.A.2) BallotTotalsDaily Collection
+Version: `0.0.2.2`
+
+Commit: `{this}`
+
+Branch: `votingMachine/simple/results`
+
+Message: `SVM 3.A.2) Create BallotTotalsDaily Collection & Methods`
+
+Project:
+* `Using the mongo upsert feature b/c the daily collection will continue to add new records everyday`
+
 ##### 3.A.1) BallotTotalsAbsolute Collection
 Version: `0.0.2.1`
 
-Commit: `{this}`
+Commit: `#cfe68af4`
 
 Branch: `votingMachine/simple/results`
 

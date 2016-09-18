@@ -5,3 +5,6 @@
   *  *.tests.js
   *  ui/components
 */
+
+// import { Meteor } from 'meteor/meteor';
+// import { collectionsSubscribe } from '../helpers/subscriptions.js'

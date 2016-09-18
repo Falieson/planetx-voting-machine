@@ -4,4 +4,5 @@
 
 import '../../api/candidates/server/fixtures.js';
 import '../../api/ballotsTotalAbsolute/server/fixtures.js';
+import '../../api/ballotsTotalDaily/server/fixtures.js';
 import '../../api/ballots/server/fixtures.js';
