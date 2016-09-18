@@ -97,6 +97,7 @@ export default class LoginForm extends Component {
   handleSubmit = event => {
     if(event) event.preventDefault();
 
+    // email or username works
     const {email, password} = this.state;
 
     Meteor.loginWithPassword(email, password, function(error) {

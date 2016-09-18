@@ -1,6 +1,5 @@
 // Client Configs: Routes
-// FIXME: Should be loaded via index.js not routes.js
-import {renderRoutes} from '../imports/startup/client/routes.js';
+import {renderRoutes} from '../imports/startup/client/index.js';
 
 // Meteor & React
 import { Meteor } from 'meteor/meteor';

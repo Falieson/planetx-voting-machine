@@ -21,18 +21,14 @@
   C) Returning Users
     [x] Router to Login Page
     [x] Account Login Form
-    [ ] Restore and Update Ballot
-  D) Handle Errors / Feedback
-    [ ] Account Create Errors
-    [ ] Account Login Errors
-    [ ] Login/Logout Success
-    [ ] Ballot Submit Success
+    [x] Restore and Update Ballot
 
 3. Tally Votes and Display Results
   A) Totals Collections
+    [ ] BallotTotalsAbsolute
+    [ ] BallotTotalsDaily
   B) Bar Graph Votes in “Today’s” Daily Battle
   C) Line Graph Votes cumulatively per day
-  D) Router to Results Page, Login Page
 
 4. Deploy to test server
   A) Choosing a Host: Digital Ocean or Galaxy?
@@ -48,9 +44,14 @@
     : select position => select from list of candidates
   B) Submit Ballot
 
-
-6. Responsive Design Layouts (grid)
-7. User Enhancements
+6. Handle Errors / Feedback
+  - Account Create Errors
+  - Account Login Errors
+  - Login/Logout Success
+  - Ballot Submit Success
+  - Ballot Loaded Success
+7. Responsive Design Layouts (grid)
+8. User Enhancements
   A) IP Address Limit (2)
 ```
 

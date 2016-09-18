@@ -1,12 +1,14 @@
 import {
   BALLOT_UPDATE_CANDIDATE,
-  BALLOT_SUBMIT_OPTIMIST, BALLOT_SUBMIT_SUCCESS, BALLOT_SUBMIT_ERROR
+  BALLOT_SUBMIT_OPTIMIST, BALLOT_SUBMIT_SUCCESS, BALLOT_SUBMIT_ERROR,
+  BALLOT_LOAD,
+  BALLOT_SUBMIT_UPDATE_SUCCESS,
 } from '../actions/Ballot.js';
 
 export default function Ballot(state = {
   candidateId:        '',
   candidateName:      {},
-  readyForSubmit: false,
+  readyForSubmit:     false,
   savingOptimisticly: false,
   saved:              false,
   error:              {},
@@ -48,6 +50,24 @@ export default function Ballot(state = {
     case BALLOT_SUBMIT_ERROR:
       return Object.assign({}, state, {
 
+        savingOptimisticly:   action.savingOptimisticly,
+        error:                action.error,
+        errorMessage:         action.errorMessage,
+        saved:                action.saved,
+        lastUpdated:          action.updatedAt,
+      });
+
+    case BALLOT_LOAD:
+      return Object.assign({}, state, {
+        candidateId:          action.candidateId,
+        candidateName:        action.candidateName,
+
+        readyForSubmit:       action.submitReady
+      });
+
+    case BALLOT_SUBMIT_UPDATE_SUCCESS:
+      return Object.assign({}, state, {
+        readyForSubmit:       action.submitReady,
         savingOptimisticly:   action.savingOptimisticly,
         error:                action.error,
         errorMessage:         action.errorMessage,

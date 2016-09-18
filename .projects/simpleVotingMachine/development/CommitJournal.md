@@ -1,10 +1,30 @@
 # Simple Voting Machine
 ## 2. User Accounts
 ### 2.C)  Returning Users
+##### 2.C.3) Logging in Loads Ballot
+Version: `0.0.2.0`
+
+Commit: `{this}`
+
+Branch: `votingMachine/simple/account`
+
+Message: `SVM 2.C.3) Login Loads Ballot and SubmitButton Updates Ballot`
+
+Project:
+* `Moved Header.jsx to Layouts/ , Pages/ now represents route options`
+* `Create updateBallot method`
+* `Create loadBallot and updateSubmittedBallot actions (no optimist/error though)`
+* `Added some conditional text to the submitButton CallToAction`
+
+Issues:
+* `[NEW] 2.C.3) It seems that SelectableList's defaultValue isn't properly selecting from the list of items - maybe they aren't rendered yet to be selected?`
+* `[CLOSED] 2.C.1) properly export renderRoutes from definition to index to main.jsx`
+* `[CLOSED] 2.B.3) submitButton wasn't setup for loggedIn users`
+
 ##### 2.C.2) Create Login Form
 Version: `0.0.1.8`
 
-Commit: `{this}`
+Commit: `#c81098e4`
 
 Branch: `votingMachine/simple/account`
 

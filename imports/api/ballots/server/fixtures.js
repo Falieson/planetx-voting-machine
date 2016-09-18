@@ -15,7 +15,8 @@ if( Meteor.isServer ){
     let newBallots = [];
 
     for(var i=0; i<=newBallotsAmount; i++) {
-      const ballot = Factory.build('ballot');
+      let ballot = Factory.build('ballot');
+      ballot.createdBy = "FIXTURE_GENERATOR";
 
       if(debug === 2){console.log(`BALLOT[${i}]`, ballot);}
 

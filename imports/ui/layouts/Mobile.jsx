@@ -5,8 +5,7 @@
 import { Meteor }     from 'meteor/meteor';
 import { Component }  from 'react';
 
-import Header         from '../pages/Header.jsx';
-import BallotPage     from '../pages/Ballot.jsx';
+import Header         from './Header.jsx';
 
 // Mobile Layout - mobile first design for mvp
 export default class MobileLayout extends Component {

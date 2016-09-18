@@ -22,12 +22,12 @@ class BallotPage extends Tracker.Component {
     super();
 
     this.state = {
-      loggedOut: false,
+      loggedIn: false,
     }
   }
   componentWillMount() {
     this.autorun(()=> {
-      this.setState({loggedOut: Meteor.userId()? false:true})
+      this.setState({loggedIn: Meteor.userId()? true:false})
     });
   }
 
@@ -40,7 +40,7 @@ class BallotPage extends Tracker.Component {
     return (
       <Paper style={style} zDepth={1} rounded={false}>
         <CandidatesListContainer />
-        {this.state.loggedOut? this.renderVoterRegistration() : null}
+        {this.state.loggedIn? null : this.renderVoterRegistration()}
         <BallotSubmitContainer />
       </Paper>
     );
@@ -65,7 +65,7 @@ class BallotPage extends Tracker.Component {
 }
 
 function mapStoreToProps(store) {
-  const { Ballot, Account } = store;
+  const { Ballot } = store;
 
   const ballotReady = Ballot.readyForSubmit;
 

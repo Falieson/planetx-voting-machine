@@ -67,5 +67,6 @@ export default class CandidatesListContainer extends Tracker.Component {
 
   handleLogout() {
     Meteor.logout();
+    // FIXME: should dispatch an action that clears the store and does the meteor.logout()
   }
 };

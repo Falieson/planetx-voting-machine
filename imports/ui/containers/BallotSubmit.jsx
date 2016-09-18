@@ -1,12 +1,12 @@
 // Libraries - Imported
-import { Meteor } from 'meteor/meteor';
-import Tracker from 'tracker-component';
-import React, {Component, PropTypes} from 'react';
-import {connect} from 'react-redux';
+import { Meteor }              from 'meteor/meteor';
+import Tracker                 from 'tracker-component';
+import {Component, PropTypes}  from 'react';
+import {connect}               from 'react-redux';
 
 // Actions
 import {submitVoterRegistrationThenBallot}  from '../actions/Account.js';
-import {updateBallotForCandidate}           from '../actions/Ballot.js';
+import {updateBallotForCurrentVoter}        from '../actions/Ballot.js';
 
 // Components
 import SubmitBallotButton         from '../components/submitBallot/Button.jsx';
@@ -14,12 +14,17 @@ import SubmitBallotButton         from '../components/submitBallot/Button.jsx';
 
 // Ballot Container - Show Ballot Submit Button
 // Container: interacts with store and db
-export default class BallotSubmitContainer extends Tracker.Component {
+class BallotSubmitContainer extends Tracker.Component {
+  constructor(){
+    super();
+
+    this.state = {
+      loggedIn: false,
+    }
+  }
   componentWillMount() {
     this.autorun(()=> {
-      if(Meteor.userId()){
-        this.subscribe('myBallot');
-      }
+      this.setState({loggedIn: Meteor.userId()? true:false})
     });
   }
 
@@ -50,9 +55,8 @@ export default class BallotSubmitContainer extends Tracker.Component {
       dispatch, candidateId, accountInfo
     }  = this.props;
 
-    // NOTE: This doesn't work for a user that wants to UPDATE their ballot
-    // create account and then subit ballot
-    dispatch( submitVoterRegistrationThenBallot(accountInfo, candidateId) );
+    if(this.state.loggedIn) dispatch( updateBallotForCurrentVoter(candidateId) );
+    else dispatch( submitVoterRegistrationThenBallot(accountInfo, candidateId) );
   }
 }
 

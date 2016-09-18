@@ -1,14 +1,29 @@
 import React, {Component, PropTypes} from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
 
-export default class SubmitBallotButton extends Component {
+export default class SubmitBallotButton extends Tracker.Component {
+  constructor(){
+    super();
+
+    this.state = {
+      loggedIn: false,
+    }
+  }
+  componentWillMount() {
+    this.autorun(()=> {
+      this.setState({loggedIn: Meteor.userId()? true:false})
+    });
+  }
+
   render() {
     const candidate = this.props.candidateName? this.props.candidateName:false;
-    const ballotComplete = this.props.ready? false:true;
+    const ballotComplete = this.props.ready? true:false;
 
-    function callToAction(name) {
+    function callToAction(name, isReady, isUpdate) {
       if(name){
-        return `Vote for ${name}`;
+        if(isReady && isUpdate) return `Update your Ballot for ${name}`;
+        else if(isUpdate)       return `Change your Ballot from ${name}`;
+        else                    return `Vote for ${name}`;
       }
       else{
         return `Make your Selection`;
@@ -17,10 +32,10 @@ export default class SubmitBallotButton extends Component {
 
     return (
       <RaisedButton
-        label       = {callToAction(candidate.formal)}
+        label       = {callToAction(candidate.formal, ballotComplete, this.state.loggedIn)}
         primary     = {true}
         onTouchTap  = {this.handleSubmit}
-        disabled    = {ballotComplete}
+        disabled    = {!ballotComplete}
         fullWidth   = {true}
       />
     );

@@ -1,6 +1,7 @@
 import _ from 'lodash';
 
-import React, {Component, PropTypes} from 'react';
+import {Component, PropTypes} from 'react';
+import { connect } from 'react-redux';
 
 import {List, ListItem, MakeSelectable} from 'material-ui/List';
 import Avatar from 'material-ui/Avatar';
@@ -11,7 +12,7 @@ function wrapState(ComposedComponent) {
   return class SelectableList extends Component {
     static propTypes = {
       children: PropTypes.node.isRequired,
-      defaultValue: PropTypes.number.isRequired,
+      defaultValue: PropTypes.string.isRequired,
     };
 
     componentWillMount() {
@@ -40,30 +41,13 @@ function wrapState(ComposedComponent) {
 }
 SelectableList = wrapState(SelectableList);
 
-export default class CandidatesList extends Component {
+class CandidatesList extends Component {
   render() {
-    const style = {
-      height: "100%",
-      maxHeight: "500px",
-      padding: "10px",
-      width: "350px",
-      margin: "10px",
-      textAlign: 'center',
-      display: 'inline-block',
-      verticalAlign: 'top',
-    };
-
     return (
-      <SelectableList defaultValue={0}>
-        {this.renderListHeader()}
+      <SelectableList defaultValue={this.props.candidateId}>
+        <Subheader>Select your choice for President</Subheader>
         {this.renderListItems()}
       </SelectableList>
-    );
-  }
-
-  renderListHeader() {
-    return (
-      <Subheader>Select your choice for President</Subheader>
     );
   }
 
@@ -78,8 +62,8 @@ export default class CandidatesList extends Component {
         );
       }
 
-      const result = items.map( (item)=> {
-        const currKey = !item._id? Random.id() : item._id;
+      const result = items.map((item)=> {
+        const currKey = item._id? item._id : Random.id();
         const title = item.name.formal;
 
         return (
@@ -92,7 +76,7 @@ export default class CandidatesList extends Component {
           />
         );
 
-      } );
+      });
 
       return result;
     }
@@ -112,3 +96,19 @@ CandidatesList.propTypes = {
   items:    PropTypes.array.isRequired,
   onSelect: PropTypes.func.isRequired,
 }
+
+function mapStoreToProps(store) {
+  const { Ballot } = store;
+
+  const {
+    candidateId,
+  } = Ballot || {
+    candidateId: ''
+  }
+
+  return {
+    candidateId
+  }
+}
+
+export default connect(mapStoreToProps)(CandidatesList)

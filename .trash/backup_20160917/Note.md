@@ -1,0 +1,1 @@
+Refactored BallotPage to be the controller and handle the actions of its children. But what about containers acting independently? The submitButton is no longer has a container, its just a presentational component.

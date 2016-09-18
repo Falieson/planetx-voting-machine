@@ -2,31 +2,24 @@
 ## Candidates
 1. Candidates: Fixture Data
 
-## Voters
-1. VoterId
-1. AccountId => RandomId() TODO: Next Commit w/ User Accounts
-1. Ballot{} (latest version)
-1. BallotIds[]
+## Account
+1. AccountId
+1. Username
+1. Emails[]
 
 ## Ballots
 1. BallotId
-1. VoterId
-1. VoteForCandidate
+1. createdBy: VoterId/AccountId
+1. candidateId: VoteForCandidate
 1. Days Until 2016 Election
 1. createdAt: Date.now()
 1. updatedAt: false
 
 
 
-
 # FINAL DATABASE
 ## Candidates
 1. Candidates: Fixture Data
-
-## Account
-1. AccountId
-1. Emails[]
-1. ProfileId
 
 ## Profile
 1. ProfileId
