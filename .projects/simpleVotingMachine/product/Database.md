@@ -15,6 +15,18 @@
 1. createdAt: Date.now()
 1. updatedAt: false
 
+## BallotTotalsAbsolute
+  1. CandidateId
+  1. TotalVotes
+
+## BallotTotalsDaily
+  1. TotalVotes:
+  1. Hourly
+    1. VoterIds[]
+    1. Votes:
+  1. Check
+    1. Sum of Votes
+    1. Sum of Voter Ids
 
 
 # FINAL DATABASE
@@ -113,21 +125,6 @@
 Separate each report layer into its own collection since each DB.View() requires a DB.Fetch() - let's give collection access an opportunity to scale so if the majority of report requests are for TotalsAbsolute and TotalsDaily then they can get more processing nodes w/o affecting the allocation for TotalsWeekly.
 VoterIds is an Array[] which means we want less than 1Million values per record. We don't use VoterIds at the Absolute level for this reason. Instead, the total vote is handled by a separate mechanism which limits one vote to voterId. On the other hand, Daily and Weekly are limited one vote per voterId at those levels at well. Since those levels won't break our VoterIds[].length constraint we will store them in the record.
 Checking the vote count is necessary because MongoDB isn't ACID. This means that any given time any record might have additional changes pending to be made to it. Banks want ACID DBs because to keep an account going below the limit, they want all changes to the account to be finished before making a new one. What could happen with Check? Well, if we don't code our incrementation correctly there is the possibility that the count of Votes differs from the number of VoterIds. IF this ever happens we'll know there's something going wrong with our data assumptions.
-
-1. BallotTotalsAbsolute
-  1. TotalVotes:
-  1. Check
-    1. Sum of Votes
-    1. Sum of Voter Ids
-
-1. BallotTotalsDaily
-  1. TotalVotes:
-  1. Hourly
-    1. VoterIds[]
-    1. Votes:
-  1. Check
-    1. Sum of Votes
-    1. Sum of Voter Ids
 
 1. BallotTotalsWeekly
   1. TotalVotes:

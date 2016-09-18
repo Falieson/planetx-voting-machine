@@ -1,11 +1,14 @@
 const debug = false;
 
-import { Meteor } from 'meteor/meteor';
-import { Mongo }  from 'meteor/mongo';
-import { ValidatedMethod } from 'meteor/mdg:validated-method';
-import { SimpleSchema } from 'meteor/aldeed:simple-schema';
+import { Meteor }           from 'meteor/meteor';
+import { ValidatedMethod }  from 'meteor/mdg:validated-method';
+import { SimpleSchema }     from 'meteor/aldeed:simple-schema';
 
-import { Ballots }  from './collections.js';
+import { Ballots }          from './collections.js';
+
+import {
+  incrBallotTotalAbsolute, decrBallotTotalAbsolute
+} from '../ballotsTotalAbsolute/methods.js';
 
 import { daysBeforeElection } from '../../lib/settings.js';
 
@@ -14,18 +17,18 @@ export const insertBallot = new ValidatedMethod({
   validate: new SimpleSchema({
     _id:                  {type: String, optional: true },
     candidateId:          {type: String },
-    createdBy:            {type: String },
+    createdBy:            {type: String, optional: true },
   }).validator(),
   run({
-    candidateId,
-    createdAt = Date.now(),
-    createdBy
+    candidateId, createdBy
   }) {
+    incrBallotTotalAbsolute.call({candidateId});
+
     return Ballots.insert({
       candidateId,
       daysBeforeElection: daysBeforeElection(),
-      createdAt,
-      createdBy : this.userId,
+      createdAt:          Date.now(),
+      createdBy:          this.userId,
     });
   }
 });
@@ -37,16 +40,19 @@ export const updateBallot = new ValidatedMethod({
     candidateId:          {type: String },
   }).validator(),
   run({
-    candidateId,
-    updatedAt = Date.now()
+    candidateId
   }) {
+    const oldCandidateId = Ballots.findOne({createdBy: this.userId}).candidateId;
+    decrBallotTotalAbsolute.call({candidateId: oldCandidateId});
+    incrBallotTotalAbsolute.call({candidateId});
+
     return Ballots.update(
       {createdBy: this.userId},
       {
         $set: {
           candidateId,
           daysBeforeElection: daysBeforeElection(),
-          updatedAt
+          updatedAt:          Date.now()
         }
       }
     );

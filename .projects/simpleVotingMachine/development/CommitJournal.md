@@ -1,10 +1,28 @@
 # Simple Voting Machine
+## 3. Tally Ballots and Display Results
+### 3.A) Totals Collections
+##### 3.A.1) BallotTotalsAbsolute Collection
+Version: `0.0.2.1`
+
+Commit: `{this}`
+
+Branch: `votingMachine/simple/results`
+
+Message: `SVM 3.A.1) Create BallotTotalsAbsolute Collection & Methods`
+
+Project:
+* `Removed createdAt/updatedAt from factories and any other places where its defined and centralized to the insert/update methods`
+
+Notes:
+* `The [ISSUE] 2.C.3) where the selectedList doesn't load the defaultValue is minor and going to be ignored since our final product won't use selectedList`
+
+
 ## 2. User Accounts
 ### 2.C)  Returning Users
 ##### 2.C.3) Logging in Loads Ballot
 Version: `0.0.2.0`
 
-Commit: `{this}`
+Commit: `#b457821c`
 
 Branch: `votingMachine/simple/account`
 

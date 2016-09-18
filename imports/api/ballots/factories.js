@@ -17,6 +17,5 @@ import { daysBeforeElection }     from '../../lib/settings.js';
 export default Factory.define('ballot', Ballots, {
   candidateId:        selectRandomCandidate()._id,
   daysBeforeElection: daysBeforeElection(),
-  createdAt:          new Date(),
   createdBy:          Random.id(),
 });

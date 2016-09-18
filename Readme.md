@@ -17,7 +17,7 @@ Intermediate to Advanced level MeteorJS or ReactJS developers. There's probably 
   1. Structure     - what files do and where they are
 1. Turn on the server and Step through each of the commits
 
-## Screenshot
+## Screenshots
 ![Screenshot](/.projects/simpleVotingMachine/product/screenshots/svm_epic-2-selectCandidateAndRegister.png)
 ![Screenshot](/.projects/simpleVotingMachine/product/screenshots/svm_epic-2-login.png)
 ![Screenshot](/.projects/simpleVotingMachine/product/screenshots/svm_epic-2-updateBallot.png)

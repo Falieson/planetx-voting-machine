@@ -50,6 +50,5 @@ export default Factory.define('candidate', Candidates, {
     wiki: defaultCandidate.wiki
   },
   image: defaultCandidate.image,
-  createdAt: new Date(),
   createdBy: 'FIXTURE_GENERATOR',
 });

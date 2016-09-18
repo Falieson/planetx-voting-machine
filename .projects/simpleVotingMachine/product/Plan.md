@@ -9,23 +9,9 @@
 
 # Plan
 ```
-2. Record and Update Vote with a User Account
-  A) Registration Form UI and Header
-    [x] UI for Registration and Form
-    [x] Use transition to show UI when candidate is selected
-  B) Create Account in DB
-    [x] Put account info in Store
-    [x] Register User && Associate Ballot with UserId
-    [x] InfoSec: only this.userId can access ballot, remove password details from store on success
-    [x] Validate Fields
-  C) Returning Users
-    [x] Router to Login Page
-    [x] Account Login Form
-    [x] Restore and Update Ballot
-
 3. Tally Votes and Display Results
   A) Totals Collections
-    [ ] BallotTotalsAbsolute
+    [x] BallotTotalsAbsolute
     [ ] BallotTotalsDaily
   B) Bar Graph Votes in “Today’s” Daily Battle
   C) Line Graph Votes cumulatively per day
@@ -44,15 +30,15 @@
     : select position => select from list of candidates
   B) Submit Ballot
 
-6. Handle Errors / Feedback
-  - Account Create Errors
-  - Account Login Errors
-  - Login/Logout Success
-  - Ballot Submit Success
-  - Ballot Loaded Success
 7. Responsive Design Layouts (grid)
 8. User Enhancements
   A) IP Address Limit (2)
+  B) Handle Errors / Feedback
+    - Account Create Errors
+    - Account Login Errors
+    - Login/Logout Success
+    - Ballot Submit Success
+    - Ballot Loaded Success
 ```
 
 # Completed Plan
@@ -74,4 +60,19 @@
   D) Submit Ballot
     - Redux: HandleCandidateSubmission
     - DB: Save Ballot - Record Vote
+
+2. Record and Update Vote with a User Account
+  A) Registration Form UI and Header
+    - UI for Registration and Form
+    - Use transition to show UI when candidate is selected
+  B) Create Account in DB
+    - Put account info in Store
+    - Register User && Associate Ballot with UserId
+    - InfoSec: only this.userId can access ballot, remove password details from store on success
+    - Validate Fields
+  C) Returning Users
+    - Router to Login Page
+    - Account Login Form
+    - Restore and Update Ballot
+
 ```

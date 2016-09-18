@@ -44,17 +44,16 @@ export const insertCandidate = new ValidatedMethod({
         type: candidateLinksSchema,
       },
       image:      {type: String, optional: true },
-      createdAt:  {type: Date },
       createdBy:  {type: String },
   }).validator(),
-  run({ name, party, links, image, createdAt, createdBy }) {
+  run({ name, party, links, image, createdBy }) {
 
     return Candidates.insert({
       name,
       party,
       links,
       image,
-      createdAt,
+      createdAt: Date.now(),
       createdBy
     });
 

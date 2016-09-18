@@ -30,7 +30,6 @@ const createCandidate = ({first, last, title, titleShortened, party, isPartyChoi
       wiki
     },
     image: `/images/${first}${last}.jpg`,
-    createdAt: new Date(),
     createdBy: 'FIXTURE_GENERATOR',
   };
 
