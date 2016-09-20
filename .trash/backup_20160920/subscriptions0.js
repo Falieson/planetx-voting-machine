@@ -6,8 +6,9 @@
   *  ui/components
 */
 
+import { Meteor } from 'meteor/meteor';
 import { collectionsSubscribe } from '../helpers/subscriptions.js'
 
-const all = ()=> collectionsSubscribe('ballotsTotalToday');
+const today = ()=> collectionsSubscribe('resultsToday');
 
-export const BallotsTotalTodaySubscription =  all;
+export const BallotsTotalDailySubscription = {today};

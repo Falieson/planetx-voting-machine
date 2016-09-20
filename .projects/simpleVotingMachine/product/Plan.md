@@ -13,8 +13,9 @@
   A) Totals Collections
     [x] BallotTotalsAbsolute
     [x] BallotTotalsDaily
-  B) Bar Graph Votes in “Today’s” Daily Battle
-  C) Line Graph Votes cumulatively per day
+  B) Display Results
+    [x] Bar Graph Votes in “Today’s” Daily Battle
+    [ ] Line Graph Votes cumulatively per day
 
 4. Deploy to test server
   A) Choosing a Host: Digital Ocean or Galaxy?

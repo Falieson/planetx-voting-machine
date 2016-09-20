@@ -1,10 +1,24 @@
 # Simple Voting Machine
 ## 3. Tally Ballots and Display Results
+### 3.B) Display Results
+##### 3.B.1) Daily Results - Bar Graph
+Version: `0.0.2.3`
+
+Commit: `{this}`
+
+Branch: `votingMachine/simple/results`
+
+Message: `SVM 3.B.1) Create ResultsPage: Today`
+
+Project:
+* `React-Charts uses charts.js`
+* `All Views.js updated, server side cursors to be used in publish functions doesn't seem to like limiter options such as {fields: }`
+
 ### 3.A) Totals Collections
 ##### 3.A.2) BallotTotalsDaily Collection
 Version: `0.0.2.2`
 
-Commit: `{this}`
+Commit: `#4d36b442`
 
 Branch: `votingMachine/simple/results`
 

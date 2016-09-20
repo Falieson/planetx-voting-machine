@@ -1,5 +1,5 @@
-import { Meteor }             from 'meteor/meteor';
 import { BallotsTotalDaily }  from './collections.js';
+import { Candidates }         from '../candidates/collections.js';
 
 export const incrBallotTotalDaily = new ValidatedMethod({
   name: 'ballotsTotalDaily.incr',
@@ -9,13 +9,15 @@ export const incrBallotTotalDaily = new ValidatedMethod({
     candidateId:          {type: String },
   }).validator(),
   run({ candidateId, _day }) {
+    const candidate = Candidates.findOne(candidateId);
     return BallotsTotalDaily.update(
       {candidateId, _day},
       {
         $set: {
           candidateId,
-           _day,
-          updatedAt:    Date.now()
+          _day,
+          lastName:   candidate.name.last,
+          updatedAt:  Date.now()
         },
         $inc: {votes: 1}
       },
@@ -32,13 +34,15 @@ export const decrBallotTotalDaily = new ValidatedMethod({
     candidateId:          {type: String },
   }).validator(),
   run({ candidateId, _day }) {
+    const candidate = Candidates.findOne(candidateId);
     return BallotsTotalDaily.update(
       {candidateId, _day},
       {
         $set: {
           candidateId,
-           _day,
-          updatedAt:    Date.now()
+          _day,
+          lastName:   candidate.name.last,
+          updatedAt:  Date.now()
         },
         $inc: {votes: -1},
       },

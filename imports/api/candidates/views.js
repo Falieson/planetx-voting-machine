@@ -11,7 +11,7 @@ import { Meteor } from 'meteor/meteor';
 // import { getQuery } from '../helpers/getQuery.js';
 import { Candidates } from './collections.js';
 
-const publicFields = {
+const {fields: publicFields} = {
   _id:    1,
   name:   1,
   image:  1,
@@ -31,7 +31,7 @@ const all = (filters)=> {
   };
 
   if(Meteor.isClient){
-    const results = Candidates.find(query, publicFields).fetch();
+    const results = Candidates.find(query, {fields: publicFields}).fetch();
 
     if(debug){
       console.log(`[CLIENT] Publishing Candidates: ${results.length}`);
@@ -39,7 +39,7 @@ const all = (filters)=> {
 
     return results;
   } else {
-    const results = Candidates.find(query, publicFields);
+    const results = Candidates.find(query);
 
     if(debug){
       console.log(`[SERVER] Publishing All (${results.count()}) Candidates: `, results.fetch());
@@ -56,7 +56,7 @@ const one = (target, filters) => {
 
   const options = {_id: target};
   if(Meteor.isClient){
-    const result = Candidates.findOne(options, publicFields);
+    const result = Candidates.findOne(options, {fields: publicFields});
 
     if(debug){
       console.log(`Fetched Candidate[${target}]:  `, result);
@@ -64,7 +64,7 @@ const one = (target, filters) => {
 
     return result;
   } else {
-    return Candidates.find(options, publicFields);
+    return Candidates.find(options);
   }
 };
 

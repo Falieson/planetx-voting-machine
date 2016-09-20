@@ -30,7 +30,7 @@ const all = (filters)=> {
   };
 
   if(Meteor.isClient){
-    const results = Ballots.find(query, publicFields).fetch();
+    const results = Ballots.find(query, {fields: publicFields}).fetch();
 
     if(debug){
       console.log(`Fetching Ballots: ${results.length}`);
@@ -38,7 +38,7 @@ const all = (filters)=> {
 
     return results;
   } else {
-    const results= Ballots.find(query, publicFields);
+    const results= Ballots.find(query);
 
     if(debug === 2){
       console.log(`Publishing All (${results.count()}) Ballots: `, results.fetch());
@@ -55,7 +55,7 @@ const one = (target, filters) => {
 
   const options = {_id: target};
   if(Meteor.isClient){
-    const result = Ballots.findOne(options, publicFields);
+    const result = Ballots.findOne(options, {fields: publicFields});
 
     if(debug === 2){
       console.log(`Fetched Ballot[${target}]:  `, result);
@@ -63,7 +63,7 @@ const one = (target, filters) => {
 
     return result;
   } else {
-    return Ballots.find(options, publicFields);
+    return Ballots.find(options);
   }
 };
 
@@ -76,7 +76,7 @@ function mine() {
     const target = Meteor.userId();
     const options = {createdBy: target};
 
-    const result = Ballots.findOne(options, publicFields);
+    const result = Ballots.findOne(options, {fields: publicFields});
 
     if(debug){
       console.log(`Fetched Ballot[${target}]:  `, result);
@@ -95,7 +95,7 @@ function mine() {
 
     const options = {createdBy: target};
 
-    const result =  Ballots.find(options, publicFields)
+    const result =  Ballots.find(options)
 
     if(debug === 2){
       console.log(`Publishing Ballot[${target}]:  `, result);

@@ -3,15 +3,17 @@ import React from 'react';
 import { Router, Route, browserHistory, IndexRoute } from 'react-router';
 
 // route components
-import App        from '../../ui/App.jsx';
-import BallotPage from '../../ui/pages/Ballot.jsx';
-import LoginPage  from '../../ui/pages/AuthLogin.jsx';
+import App                from '../../ui/App.jsx';
+import BallotPage         from '../../ui/pages/Ballot.jsx';
+import LoginPage          from '../../ui/pages/AuthLogin.jsx';
+import TodaysResultsPage  from '../../ui/pages/ResultsToday.jsx';
 
 export const renderRoutes = () => (
   <Router history={browserHistory}>
-    <Route path="/"       component={App}>
-      <IndexRoute         component={BallotPage} />
-      <Route path="login" component={LoginPage}/>
+    <Route path="/"               component={App}>
+      <IndexRoute                 component={BallotPage} />
+      <Route path="login"         component={LoginPage}/>
+      <Route path="results/today" component={TodaysResultsPage}/>
     </Route>
   </Router>
 );

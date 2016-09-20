@@ -3,11 +3,10 @@ const debug = process.env.NODE_ENV === "development";
 import _ from 'lodash';
 
 import { BallotsTotalDaily }    from '../collections.js';
-import { incrBallotTotalDaily } from '../../ballotsTotalDaily/methods.js';
+import { incrBallotTotalDaily } from '../methods.js';
 
 import { CandidatesView }       from '../../candidates/views.js';
 
-import '../../ballotsTotalAbsolute/factories.js'; // #Factory.build('ballotTotalAbsolute')
 import { eurodate }             from '../../../lib/date.js'
 
 if( Meteor.isServer ){
@@ -19,7 +18,7 @@ if( Meteor.isServer ){
     _.each(candidates, (candidate)=> {
       const candidateId = candidate._id;
       const today = eurodate();
-      
+
       incrBallotTotalDaily.call({candidateId, _day: today});
     });
   }
