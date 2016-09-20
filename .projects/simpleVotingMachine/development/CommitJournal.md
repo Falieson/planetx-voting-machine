@@ -1,10 +1,19 @@
 # Simple Voting Machine
 ## 3. Tally Ballots and Display Results
 ### 3.B) Display Results
+##### 3.B.2) Daily Results - Bar Graph
+Version: `0.0.2.4`
+
+Commit: `{this}`
+
+Branch: `votingMachine/simple/results`
+
+Message: `SVM 3.B.2) Create ResultsPage: Total`
+
 ##### 3.B.1) Daily Results - Bar Graph
 Version: `0.0.2.3`
 
-Commit: `{this}`
+Commit: `#096e772d`
 
 Branch: `votingMachine/simple/results`
 

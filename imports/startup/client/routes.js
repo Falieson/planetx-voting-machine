@@ -6,6 +6,8 @@ import { Router, Route, browserHistory, IndexRoute } from 'react-router';
 import App                from '../../ui/App.jsx';
 import BallotPage         from '../../ui/pages/Ballot.jsx';
 import LoginPage          from '../../ui/pages/AuthLogin.jsx';
+
+import TotalResultsPage   from '../../ui/pages/ResultsTotal.jsx';
 import TodaysResultsPage  from '../../ui/pages/ResultsToday.jsx';
 
 export const renderRoutes = () => (
@@ -13,6 +15,7 @@ export const renderRoutes = () => (
     <Route path="/"               component={App}>
       <IndexRoute                 component={BallotPage} />
       <Route path="login"         component={LoginPage}/>
+      <Route path="results/total" component={TotalResultsPage}/>
       <Route path="results/today" component={TodaysResultsPage}/>
     </Route>
   </Router>

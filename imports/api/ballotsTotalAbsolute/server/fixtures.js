@@ -18,6 +18,7 @@ if( Meteor.isServer ){
       const candidateId = candidate._id;
       const absoluteTotal = Factory.build('ballotTotalAbsolute', {candidateId});
       absoluteTotal.updatedAt = Date.now();
+      absoluteTotal.lastName  = candidate.name.last;
 
       BallotsTotalAbsolute.insert(absoluteTotal);
     });

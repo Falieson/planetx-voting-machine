@@ -15,6 +15,7 @@
     [x] BallotTotalsDaily
   B) Display Results
     [x] Bar Graph Votes in “Today’s” Daily Battle
+    [x] Bar Graph Total Votes
     [ ] Line Graph Votes cumulatively per day
 
 4. Deploy to test server

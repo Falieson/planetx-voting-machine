@@ -6,15 +6,15 @@ import _ from 'lodash';
 import {Bar} from 'react-chartjs-2';
 
 // Actions
-import { fetchDailyResults }  from '../actions/Results.js';
+import { fetchTotalResults }  from '../actions/Results.js';
 
 export default class CandidatesListContainer extends Tracker.Component {
   componentWillMount() {
     const {dispatch} = this.props;
 
     this.autorun(()=> {
-      this.subscribe('ballotsTotalToday');
-      dispatch( fetchDailyResults() );
+      this.subscribe('ballotsTotalAbsolute');
+      dispatch( fetchTotalResults() );
     });
   }
 
@@ -22,9 +22,14 @@ export default class CandidatesListContainer extends Tracker.Component {
     let labels  = []
     let votes   = [];
     _.each(this.props.items, (item)=> {
+      console.log("ITEM: ", item);
+
       labels.push(item.lastName);
       votes.push(item.votes);
     });
+
+    console.log("LABELS: ", labels);
+
 
     const style = {
       textAlign: 'center',
@@ -47,7 +52,7 @@ export default class CandidatesListContainer extends Tracker.Component {
 
     return (
       <div>
-        <h2 style={style}>Today's Polling Results</h2>
+        <h2 style={style}>Total Polling Results</h2>
         <Bar
           data=   {records}
           width=  {100}
