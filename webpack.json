@@ -1,0 +1,14 @@
+{
+  "css": {
+    "module": true
+  },
+  "module": {
+    "loaders": [
+      {
+        "test": "/\\.css$/",
+        "loader": "style!css?modules",
+        "include": "/flexboxgrid/"
+      }
+    ]
+  }
+}

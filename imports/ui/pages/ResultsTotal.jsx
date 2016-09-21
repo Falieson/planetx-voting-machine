@@ -4,6 +4,7 @@ import { connect }              from 'react-redux';
 import _ from 'lodash';
 
 import {Bar} from 'react-chartjs-2';
+import {Row, Col} from 'react-flexbox-grid/lib/index';
 
 // Actions
 import { fetchTotalResults }  from '../actions/Results.js';
@@ -22,18 +23,20 @@ export default class CandidatesListContainer extends Tracker.Component {
     let labels  = []
     let votes   = [];
     _.each(this.props.items, (item)=> {
-      console.log("ITEM: ", item);
-
       labels.push(item.lastName);
       votes.push(item.votes);
     });
 
-    console.log("LABELS: ", labels);
-
-
-    const style = {
-      textAlign: 'center',
-    }
+    const styles ={
+      container: {
+        backgroundColor: "rgb(233, 235, 234)",
+      },
+      h2: {
+        margin:     '0 0',
+        padding:    '10px 0',
+        textAlign:  'center',
+      },
+    };
 
     const records = {
       labels: labels,
@@ -51,17 +54,21 @@ export default class CandidatesListContainer extends Tracker.Component {
     };
 
     return (
-      <div>
-        <h2 style={style}>Total Polling Results</h2>
-        <Bar
-          data=   {records}
-          width=  {100}
-          height= {100}
-          options={{
-            maintainAspectRatio: false
-          }}
-        />
-      </div>
+      <Row center="xs">
+        <Col type="row" xs>
+          <div style={styles.container}>
+            <h2 style={styles.h2}>Total Polling Results</h2>
+            <Bar
+              data=   {records}
+              width=  {100}
+              height= {100}
+              options={{
+                maintainAspectRatio: false
+              }}
+            />
+          </div>
+        </Col>
+      </Row>
     );
   }
 }

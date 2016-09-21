@@ -10,6 +10,7 @@ import MobileLayout     from './layouts/Mobile.jsx';
 // App component - represents the whole app
 export default class App extends Component {
   render() {
+
     return (
       <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
         <MobileLayout children={this.props.children}/>

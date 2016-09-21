@@ -35,7 +35,6 @@
     - Ballot Loaded Success
   C) Line Graph Votes cumulatively per day
   D) UI Tweaks
-
 ```
 
 # Completed Plan

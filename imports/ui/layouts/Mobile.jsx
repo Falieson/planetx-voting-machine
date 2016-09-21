@@ -1,9 +1,5 @@
-// https://css-tricks.com/snippets/css/media-queries-for-standard-devices/
-// iPhone 6+ :: landscape width: 736px
-// mvp will be a portrait solution that will still look ok if the user puts
-//  their iphone 6+ in landscape mode
-import { Meteor }     from 'meteor/meteor';
-import { Component }  from 'react';
+import {Component}  from 'react';
+import {Grid, Row, Col} from 'react-flexbox-grid/lib/index';
 
 import Header         from './Header.jsx';
 
@@ -11,10 +7,14 @@ import Header         from './Header.jsx';
 export default class MobileLayout extends Component {
   render() {
     return (
-      <div>
-        <Header />
+      <Grid>
+        <Row>
+          <Col type="row" xs={12}>
+            <Header />
+          </Col>
+        </Row>
         {this.props.children}
-      </div>
+      </Grid>
     );
   }
 }

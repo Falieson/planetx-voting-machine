@@ -1,4 +1,5 @@
-import React from 'react';
+import {Component, PropTypes} from 'react';
+import {Row, Col} from 'react-flexbox-grid/lib/index';
 
 import FlatButton from 'material-ui/FlatButton';
 import Paper from 'material-ui/Paper';
@@ -7,140 +8,132 @@ import IconButton from 'material-ui/IconButton';
 import Gavel from 'material-ui/svg-icons/action/gavel';
 import Delete from 'material-ui/svg-icons/action/delete-forever';
 
+class BallotChoicesContainer extends Component {
+  render() {
 
-// const style = {
-//   height: 100,
-//   width: 100,
-//   margin: 20,
-//   textAlign: 'center',
-//   display: 'inline-block',
-// };
-// smallIcon: {
-//   width: 36,
-//   height: 36,
-// },
-// largeIcon: {
-//   width: 60,
-//   height: 60,
-// },
-// medium: {
-//   width: 96,
-//   height: 96,
-//   padding: 24,
-// },
-// large: {
-//   width: 120,
-//   height: 120,
-//   padding: 30,
-// },
+    const styles = {
+      badgeIcon: {
+        top:          10,
+        left:         36
+      },
+      badge: {
+        padding:      3,
+        width:        '100%',
+      },
+      smallUpOne: {
+        height:       72,
+        padding:      6,
+        width:        '100%',
+        textAlign:    'left',
+        border:       '2px dashed rgb(78, 181, 101)',
+      },
+      smallUpTwo: {
+        height:       72,
+        padding:      6,
+        width:        '100%',
+        textAlign:    'left',
+        border:       '2px dashed rgb(59, 154, 80)',
+      },
+      smallUpThree: {
+        height:       72,
+        padding:      6,
+        width:        '100%',
+        textAlign:    'left',
+        border:       '2px dashed rgb(74, 136, 88)',
+      },
+      smallDown: {
+        height:       72,
+        padding:      6,
+        width:        '100%',
+        textAlign:    'left',
+        border:       '2px dashed rgb(218, 165, 63)',
+      },
+    };
 
-  // width: 72,
-  // height: 72,
-  // padding: 16,
-  //
-  //   width:    48,
-  //   height:   48,
+    const ChoiceIconFirst = () => (
+      <Badge
+        badgeContent={'1st'}
+        secondary={true}
+        badgeStyle={styles.badgeIcon}
+        style={styles.badge}
+      >
+        <FlatButton
+          label=          "+3 Points"
+          labelPosition=  "after"
+          style=          {styles.smallUpOne}
+          icon=           {<Gavel />}
+        />
+      </Badge>
+    );
+    const ChoiceIconSecond = () => (
+      <Badge
+        badgeContent={'2nd'}
+        secondary={true}
+        badgeStyle={styles.badgeIcon}
+        style={styles.badge}
+      >
+        <FlatButton
+          label=          "+2 Points"
+          labelPosition=  "after"
+          style=          {styles.smallUpTwo}
+          icon=           {<Gavel />}
+        />
+      </Badge>
+    );
+    const ChoiceIconThird = () => (
+      <Badge
+        badgeContent={'3rd'}
+        secondary={true}
+        badgeStyle={styles.badgeIcon}
+        style={styles.badge}
+      >
+        <FlatButton
+          label=          "+1 Point"
+          labelPosition=  "after"
+          style=          {styles.smallUpThree}
+          icon=           {<Gavel />}
+        />
+      </Badge>
+    );
+    const ChoiceIconVeto = () => (
+      <Badge
+        badgeContent={'Veto'}
+        secondary={true}
+        badgeStyle={styles.badgeIcon}
+        style={styles.badge}
+      >
+        <FlatButton
+          label=          "-3 Points"
+          labelPosition=  "after"
+          style=          {styles.smallDown}
+          icon=           {<Delete />}
+        />
+      </Badge>
+    );
 
-const styles = {
-  badgeIcon: {
-    top:          10,
-    left:         36
-  },
-  badge: {
-    padding:      3,
-    width:        '24%',
-  },
-  badgeLast: {
-    padding:      3,
-    width:        '24%',
-    borderRight:  '2px solid rgb(218, 165, 63)',
-  },
-  small: {
-    height:       72,
-    padding:      6,
-    width:        '100%',
-    textAlign:    'left'
-  },
-};
-// tooltip=        "First Choice"
-// touch=          {true}
-// tooltip=        "Second Choice"
-// touch=          {true}
-// tooltip=        "Third Choice"
-// touch=          {true}
+    return (
+      <Paper zDepth={1} style={this.props.style}>
+        <Row start="xs">
+          <Col xs >
+            <ChoiceIconFirst />
+          </Col>
+          <Col xs >
+            <ChoiceIconSecond />
+          </Col>
+          <Col xs >
+            <ChoiceIconThird />
+          </Col>
+          <Col xs >
+            <ChoiceIconVeto />
+          </Col>
+        </Row>
+      </Paper>
+    );
+  }
+}
 
-const ChoiceIconFirst = () => (
-  <Badge
-    badgeContent={'1st'}
-    secondary={true}
-    badgeStyle={styles.badgeIcon}
-    style={styles.badge}
-  >
-    <FlatButton
-      label=          "+3 Points"
-      labelPosition=  "after"
-      iconStyle=      {styles.mediumIcon}
-      style=          {styles.small}
-      icon=           {<Gavel />}
-    />
-  </Badge>
-);
-const ChoiceIconSecond = () => (
-  <Badge
-    badgeContent={'2nd'}
-    secondary={true}
-    badgeStyle={styles.badgeIcon}
-    style={styles.badge}
-  >
-    <FlatButton
-      label=          "+2 Points"
-      labelPosition=  "after"
-      iconStyle=      {styles.mediumIcon}
-      style=          {styles.small}
-      icon=           {<Gavel />}
-    />
-  </Badge>
-);
-const ChoiceIconThird = () => (
-  <Badge
-    badgeContent={'3rd'}
-    secondary={true}
-    badgeStyle={styles.badgeIcon}
-    style={styles.badgeLast}
-  >
-    <FlatButton
-      label=          "+1 Point"
-      labelPosition=  "after"
-      iconStyle=      {styles.mediumIcon}
-      style=          {styles.small}
-      icon=           {<Gavel />}
-    />
-  </Badge>
-);
-const ChoiceIconBlock = () => (
-  <Badge
-    badgeContent={'Veto'}
-    secondary={true}
-    badgeStyle={styles.badgeIcon}
-    style={styles.badge}
-  >
-    <FlatButton
-      label=          "-3 Points"
-      labelPosition=  "after"
-      iconStyle=      {styles.mediumIcon}
-      style=          {styles.small}
-      icon=           {<Delete />}
-    />
-  </Badge>
-);
-
-const BallotChoicesContainer = () => (
-  <Paper zDepth={1}>
-    <ChoiceIconFirst />
-    <ChoiceIconSecond />
-    <ChoiceIconThird />
-    <ChoiceIconBlock />
-  </Paper>
-);
+BallotChoicesContainer.propTypes = {
+  style: PropTypes.object,
+}
 
 export default BallotChoicesContainer;

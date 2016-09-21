@@ -29,24 +29,16 @@ class BallotSubmitContainer extends Tracker.Component {
   }
 
   render() {
-    const style = {
-      height: "100%",
-      padding: "10px",
-      minWidth: "300px",
-      width: "100%",
-      margin: "10px 0",
-      textAlign: 'center',
-      display: 'block',
-    };
-
     const { candidateName, submitIsReady } = this.props;
 
     return (
-      <SubmitBallotButton
-        candidateName = {candidateName}
-        ready         = {submitIsReady}
-        onSubmit      = {this.onSubmitBallot.bind(this)}
-      />
+      <div style={this.props.style}>
+        <SubmitBallotButton
+          candidateName = {candidateName}
+          ready         = {submitIsReady}
+          onSubmit      = {this.onSubmitBallot.bind(this)}
+        />
+      </div>
     );
   }
 
@@ -93,6 +85,10 @@ function mapStoreToProps(store) {
   const submitIsReady = BallotReadyForSubmit && (AccountReadyForSubmit || loggedIn);
 
   return { candidateId, candidateName, accountInfo, submitIsReady };
+}
+
+BallotSubmitContainer.propTypes = {
+  style: PropTypes.object,
 }
 
 export default connect(mapStoreToProps)(BallotSubmitContainer);

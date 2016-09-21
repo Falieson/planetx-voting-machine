@@ -43,14 +43,16 @@ class NewAccountContainer extends Component {
     }
 
     return (
-      <VoterRegisterForm
-        onChangeUsername    =  {slow(this.onChangeUsername.bind(this))}
-        onChangeEmail       =  {slow(this.onChangeEmail.bind(this))}
-        onChangePassword    =  {slow(this.onChangePassword.bind(this))}
-        validateUser        =  {this.state.username}
-        validateEmail       =  {this.state.email}
-        validatePassword    =  {this.state.password}
-     />
+      <div style={this.props.style}>
+        <VoterRegisterForm
+          onChangeUsername    =  {slow(this.onChangeUsername.bind(this))}
+          onChangeEmail       =  {slow(this.onChangeEmail.bind(this))}
+          onChangePassword    =  {slow(this.onChangePassword.bind(this))}
+          validateUser        =  {this.state.username}
+          validateEmail       =  {this.state.email}
+          validatePassword    =  {this.state.password}
+       />
+      </div>
     );
   }
 
@@ -142,6 +144,11 @@ class NewAccountContainer extends Component {
       dispatch( updateAccountPasswordInvalid() );
     }
   }
+}
+
+
+NewAccountContainer.propTypes = {
+  style: PropTypes.object,
 }
 
 export default connect()(NewAccountContainer);

@@ -39,10 +39,12 @@ class CandidatesListContainer extends Tracker.Component {
     const {items} = this.props;
 
     return (
-      <CandidatesList
-        items     = {shuffle(items)}
-        onSelect  = {this.onSelectCandidate.bind(this)}
-      />
+      <Paper zDepth={1} rounded={false} style={this.props.style}>
+        <CandidatesList
+          items     = {shuffle(items)}
+          onSelect  = {this.onSelectCandidate.bind(this)}
+        />
+      </Paper>
     );
   }
 
@@ -64,6 +66,10 @@ function mapStoreToProps(store) {
   return {
     items
   }
+}
+
+CandidatesListContainer.propTypes = {
+  style: PropTypes.object,
 }
 
 export default connect(mapStoreToProps)(CandidatesListContainer)

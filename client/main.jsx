@@ -15,7 +15,7 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 
 function AppRoot() {
   return (
-    <div className="todo-container">
+    <div className="root-container">
       <Provider store={Store()}>
         {renderRoutes()}
       </Provider>

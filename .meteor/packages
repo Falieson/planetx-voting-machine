@@ -7,15 +7,15 @@
 # Base
 meteor-base@1.0.4             # Packages every Meteor app needs to have
 mobile-experience@1.0.4       # Packages for a great mobile UX
-reactive-var@1.0.10            # Reactive variable for tracker
-jquery@1.11.9                  # Helpful client-side library
+reactive-var@1.0.10           # Reactive variable for tracker
+jquery@1.11.9                 # Helpful client-side library
 tracker@1.1.0                 # Meteor's client-side reactive programming library
 
 # Accounts Libraries
 accounts-password
 
 # DB
-mongo@1.1.12                   # The database Meteor supports right now
+mongo@1.1.12                  # The database Meteor supports right now
 dburles:factory
 aldeed:simple-schema
 ddp-rate-limiter@1.0.5
@@ -27,13 +27,14 @@ mdg:validation-error
 # Build
 standard-minifier-css@1.2.0   # CSS minifier run for production mode
 standard-minifier-js@1.2.0    # JS minifier run for production mode
-es5-shim@4.6.14                # ECMAScript 5 compatibility for older browsers
+es5-shim@4.6.14               # ECMAScript 5 compatibility for older browsers
 static-html@1.1.12
 webpack:webpack
 
 # React
 webpack:react
 webpack:less
+webpack:css                   # Added for flexboxgrid package
 less@2.7.5
 
 # Unsorted

@@ -1,6 +1,22 @@
 # Ranked Voting Machine
 ## 4. Ranked Voting - Core Update
 ### 4.A) UI for Ranked Voting
+##### 4.A.2) Grid Layout - Responsive Layout of Components
+Version: `0.0.3.1`
+
+Commit: `{this}`
+
+Branch: `votingMachine/ranked/create`
+
+Message: `SVM 4.A.2) Update All Pages, Templates, Containers: Responsive UI`
+
+Project:
+* `Update all components with columns and mobileLayout (only one we have right now) with responsive UI`
+* ` Installed and Configured [react-flexbox-grid](http://roylee0704.github.io/react-flexbox-grid/)`
+
+Notes:
+* `Tried [react-grid-layout](https://github.com/STRML/react-grid-layout) but it was over powered for my needs.`
+
 ##### 4.A.1) Dummy Ranked Results Component
 Version: `0.0.3.0`
 
@@ -9,6 +25,7 @@ Commit: `{this}`
 Branch: `votingMachine/ranked/create`
 
 Message: `SVM 4.A.1) Create Dummy Ranked Results UI Component`
+
 
 
 # Simple Voting Machine

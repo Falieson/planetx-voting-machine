@@ -10,9 +10,8 @@
   -- "Your email will never be share or used for marketing"
   -- "All Notifications are opt-in from your settings page"
 */
-
-
 import React, {Component, PropTypes} from 'react';
+import {Row, Col} from 'react-flexbox-grid/lib/index';
 
 import TextField from 'material-ui/TextField';
 import Paper from 'material-ui/Paper';
@@ -33,23 +32,30 @@ export default class RegisterContainer extends Component {
   render() {
     // the styling is a bit ugly but we'll fix it up for the final
     const containerStyle = {
-      width: '100%',
       textAlign: 'center',
       display: 'block',
-      paddingTop: '5px'
+      paddingTop: '15px'
     };
+    //
+    // return (
+    //   <Paper style={containerStyle} zDepth={1}>
+    //     {this.renderCTA()}
+    //     {this.renderFields()}
+    //   </Paper>
+    // );
 
     return (
       <Paper style={containerStyle} zDepth={1}>
-        {this.renderCTA()}
-        {this.renderFields()}
+        <Row center="xs">
+          <Col xs>{this.renderCTA()}</Col>
+          <Col xs>{this.renderFields()}</Col>
+        </Row>
       </Paper>
-    );
+    )
   }
 
   renderCTA() {
     const containerStyle = {
-      width: '49%',
       textAlign: 'left',
       display: 'inline-block',
       paddingLeft: '5px',
@@ -92,10 +98,8 @@ export default class RegisterContainer extends Component {
         borderColor: blue500,
       },
       containerStyle: {
-        width: '49%',
         textAlign: 'center',
         display: 'inline-block',
-        borderLeft: '1px dashed',
         marginBottom: '15px',
       },
       h1Style: {

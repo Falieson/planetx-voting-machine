@@ -3,11 +3,11 @@ import { Meteor } from 'meteor/meteor';
 import Tracker from 'tracker-component';
 import { Component } from 'react';
 import { connect } from 'react-redux';
-
 import ReactTransitionGroup from 'react-addons-transition-group';
 
-// Libraries - UI
-import Paper from 'material-ui/Paper';
+// Libraries - Layout
+import { Row, Col } from 'react-flexbox-grid/lib/index';
+
 
 // Containers (Components)
 import BallotChoicesContainer   from '../containers/BallotChoices.jsx';
@@ -33,22 +33,36 @@ class BallotPage extends Tracker.Component {
   }
 
   render() {
-    // Mobile Landscape Layout specs
     const style = {
-      height: "100%"
+      choices:  undefined,
+      list:     undefined,
+      register: undefined,
+      submit:   undefined,
     };
 
     return (
-      <Paper style={style} zDepth={1} rounded={false}>
-        <BallotChoicesContainer />
-        <CandidatesListContainer />
-        {this.state.loggedIn? null : this.renderVoterRegistration()}
-        <BallotSubmitContainer />
-      </Paper>
+      <div>
+        <Row>
+          <Col type="row" xs={12}>
+            <BallotChoicesContainer style={style.choices} />
+          </Col>
+        </Row>
+        <Row>
+          <Col type="row" xs={12}>
+            <CandidatesListContainer style={style.list} />
+          </Col>
+        </Row>
+        {this.state.loggedIn? null : this.renderVoterRegistration(style.register)}
+        <Row>
+          <Col type="row" xs={12}>
+            <BallotSubmitContainer style={style.submit} />
+          </Col>
+        </Row>
+      </div>
     );
   }
 
-  renderVoterRegistration() {
+  renderVoterRegistration(containerStyle) {
     // Correct way of only rendering 0-1 child component
     // https://github.com/facebook/react/blob/master/docs/docs/10.1-animation.md
     const FirstChild = React.createClass({
@@ -60,7 +74,7 @@ class BallotPage extends Tracker.Component {
 
     return (
       <ReactTransitionGroup component={FirstChild}>
-        {this.props.ballotReady? <NewAccountContainer /> : null}
+        {this.props.ballotReady? <Row><Col type="row" xs={12}><NewAccountContainer style={containerStyle} /></Col></Row> : null}
       </ReactTransitionGroup>
     );
   }
