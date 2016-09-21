@@ -1,3 +1,16 @@
+# Ranked Voting Machine
+## 4. Ranked Voting - Core Update
+### 4.A) UI for Ranked Voting
+##### 4.A.1) Dummy Ranked Results Component
+Version: `0.0.3.0`
+
+Commit: `{this}`
+
+Branch: `votingMachine/ranked/create`
+
+Message: `SVM 4.A.1) Create Dummy Ranked Results UI Component`
+
+
 # Simple Voting Machine
 ## 3. Tally Ballots and Display Results
 ### 3.B) Display Results

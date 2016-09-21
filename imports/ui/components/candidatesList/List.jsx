@@ -45,7 +45,7 @@ class CandidatesList extends Component {
   render() {
     return (
       <SelectableList defaultValue={this.props.candidateId}>
-        <Subheader>Select your choice for President</Subheader>
+        <Subheader>Select your Top 3-choices for President</Subheader>
         {this.renderListItems()}
       </SelectableList>
     );

@@ -1,39 +1,31 @@
 # Goals
-- List of Candidates
-- Add a Candidate
-- Choose Top 3 Candidates (1-3 rank)
-- Choose Worst Candidate (1)
-- Save/Update Selected Votes
-- Sign with Alias or Public Name and Add Comment
-- Create Account with Login and Email Recovery to update later
+ - [x] List of Candidates
+ - [x] Add a Candidate
+ - [ ] Choose Top 3 Candidates (1-3 rank)
+ - [ ] Choose Worst Candidate (1)
+ - [x] Save/Update Selected Votes
+ - [ ] Sign with Alias or Public Name and Add Comment
+ - [x] Create Account with Login and Email Recovery to update later
 
 # Plan
 ```
-3. Tally Votes and Display Results
-  A) Totals Collections
-    [x] BallotTotalsAbsolute
-    [x] BallotTotalsDaily
-  B) Display Results
-    [x] Bar Graph Votes in “Today’s” Daily Battle
-    [x] Bar Graph Total Votes
-    [ ] Line Graph Votes cumulatively per day
+4. Ranked Voting - Core Update
+  A) UI for Ranked Voting
+  [x] Dummy Ranked Results Component
+  [-] Grid Layout - Basic Responsive Design
+  [-] Update Ballot Store: Ranked
+  B) DB for Ranked Voting
+  [-] Update Ballot DB: Ranked
+  [-] Update Results: Ranked
 
-4. Deploy to test server
+6. Deploy to test server
   A) Choosing a Host: Digital Ocean or Galaxy?
   B) MupX
   C) Setting up a Droplet
   D) DNS-Bind9, Nginx
   E) Link to Test Demo
 
-5. Update 1-4 with Ranked Voting Algorithm
-  A) Select Candidate
-  - Ranked Selector and Veto UI: Show Position and Point Value
-  - Mobile First
-    : select position => select from list of candidates
-  B) Submit Ballot
-
-7. Responsive Design Layouts (grid)
-8. User Enhancements
+7. Enhancements
   A) IP Address Limit (2)
   B) Handle Errors / Feedback
     - Account Create Errors
@@ -41,6 +33,9 @@
     - Login/Logout Success
     - Ballot Submit Success
     - Ballot Loaded Success
+  C) Line Graph Votes cumulatively per day
+  D) UI Tweaks
+
 ```
 
 # Completed Plan
@@ -77,4 +72,46 @@
     - Account Login Form
     - Restore and Update Ballot
 
+3. Tally Votes and Display Results
+  A) Totals Collections
+    [x] BallotTotalsAbsolute
+    [x] BallotTotalsDaily
+  B) Display Results
+    [x] Bar Graph Votes in “Today’s” Daily Battle
+    [x] Bar Graph Total Votes
+    [ ] Line Graph Votes cumulatively per day
+
+```
+
+# Old Plan
+```
+3. Tally Votes and Display Results
+  B) Display Results
+    [x] Bar Graph Votes in “Today’s” Daily Battle
+    [x] Bar Graph Total Votes
+    [ ] Line Graph Votes cumulatively per day
+
+4. Deploy to test server
+  A) Choosing a Host: Digital Ocean or Galaxy?
+  B) MupX
+  C) Setting up a Droplet
+  D) DNS-Bind9, Nginx
+  E) Link to Test Demo
+
+5. Update 1-4 with Ranked Voting Algorithm
+  A) Select Candidate
+  - Ranked Selector and Veto UI: Show Position and Point Value
+  - Mobile First
+    : select position => select from list of candidates
+  B) Submit Ballot
+
+7. Responsive Design Layouts (grid)
+8. User Enhancements
+  A) IP Address Limit (2)
+  B) Handle Errors / Feedback
+    - Account Create Errors
+    - Account Login Errors
+    - Login/Logout Success
+    - Ballot Submit Success
+    - Ballot Loaded Success
 ```

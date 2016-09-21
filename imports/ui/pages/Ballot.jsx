@@ -10,6 +10,7 @@ import ReactTransitionGroup from 'react-addons-transition-group';
 import Paper from 'material-ui/Paper';
 
 // Containers (Components)
+import BallotChoicesContainer   from '../containers/BallotChoices.jsx';
 import CandidatesListContainer  from '../containers/CandidateList.jsx';
 import NewAccountContainer      from '../containers/NewAccount.jsx';
 import BallotSubmitContainer    from '../containers/BallotSubmit.jsx';
@@ -39,6 +40,7 @@ class BallotPage extends Tracker.Component {
 
     return (
       <Paper style={style} zDepth={1} rounded={false}>
+        <BallotChoicesContainer />
         <CandidatesListContainer />
         {this.state.loggedIn? null : this.renderVoterRegistration()}
         <BallotSubmitContainer />
