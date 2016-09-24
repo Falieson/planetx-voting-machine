@@ -1,4 +1,4 @@
-import {Component}  from 'react';
+import React, {Component}  from 'react';
 import {Grid, Row, Col} from 'react-flexbox-grid/lib/index';
 
 import Header         from './Header.jsx';

@@ -1,7 +1,7 @@
 // Libraries - Imported
 import { Random }               from 'meteor/random';
 import Tracker                  from 'tracker-component';
-import { Component, PropTypes } from 'react';
+import React, {Component, PropTypes}  from 'react';
 import { connect }              from 'react-redux';
 // Libraries - UI
 import Paper from 'material-ui/Paper';
@@ -10,7 +10,7 @@ import { shuffle } from '../../lib/javascript.js';
 
 // Actions
 import { fetchCandidates, subscriptionForCandidatesPending }  from '../actions/Candidates.js';
-import { loadBallotforAccount, updateBallotForCandidate }     from '../actions/Ballot.js';
+import { loadBallotforAccount, updateBallotChoiceForCandidate }     from '../actions/Ballot.js';
 
 // Components
 import CandidatesList from '../components/candidatesList/List.jsx';
@@ -39,7 +39,7 @@ class CandidatesListContainer extends Tracker.Component {
     const {items} = this.props;
 
     return (
-      <Paper zDepth={1} rounded={false} style={this.props.style}>
+      <Paper zDepth={1} rounded={false}>
         <CandidatesList
           items     = {shuffle(items)}
           onSelect  = {this.onSelectCandidate.bind(this)}
@@ -50,7 +50,7 @@ class CandidatesListContainer extends Tracker.Component {
 
   onSelectCandidate = candidateId => {
     const {dispatch} = this.props;
-    dispatch( updateBallotForCandidate(candidateId) );
+    dispatch( updateBallotChoiceForCandidate(candidateId) );
   }
 }
 
@@ -66,10 +66,6 @@ function mapStoreToProps(store) {
   return {
     items
   }
-}
-
-CandidatesListContainer.propTypes = {
-  style: PropTypes.object,
 }
 
 export default connect(mapStoreToProps)(CandidatesListContainer)

@@ -1,6 +1,6 @@
 // Libraries
 import { Meteor }             from 'meteor/meteor';
-import React, { Component }   from 'react';
+import React, {Component}   from 'react';
 import Tracker                from 'tracker-component';
 import { Link }               from 'react-router'
 
@@ -32,7 +32,7 @@ export default class CandidatesListContainer extends Tracker.Component {
   render() {
     const Title = (
       <Link to='/'>
-        Voting Machine - U.S.A. 2016 Presedential Election
+        Voting Machine - U.S.A. 2016 Presidential Election
       </Link>
     );
 

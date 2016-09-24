@@ -12,20 +12,21 @@
 4. Ranked Voting - Core Update
   A) UI for Ranked Voting
   [x] Dummy Ranked Results Component
-  [-] Grid Layout - Basic Responsive Design
+  [x] Grid Layout - Basic Responsive Design
   [-] Update Ballot Store: Ranked
   B) DB for Ranked Voting
   [-] Update Ballot DB: Ranked
+  [-] Update Load Ballot from DB: Ranked
   [-] Update Results: Ranked
 
-6. Deploy to test server
+5. Deploy to test server
   A) Choosing a Host: Digital Ocean or Galaxy?
   B) MupX
   C) Setting up a Droplet
   D) DNS-Bind9, Nginx
   E) Link to Test Demo
 
-7. Enhancements
+6. Enhancements
   A) IP Address Limit (2)
   B) Handle Errors / Feedback
     - Account Create Errors
@@ -33,8 +34,20 @@
     - Login/Logout Success
     - Ballot Submit Success
     - Ballot Loaded Success
-  C) Line Graph Votes cumulatively per day
+  C) Graphs
+    - Line Graph Votes cumulatively per day
+    - Line Graph Votes cumulative & up vs down per day
+    - Total Votes Up vs Down & Total Voters Counter
   D) UI Tweaks
+
+7. Optimizations
+  A) DDP Rate Limit for the results pages and anything else that fetches from the DB
+  B) Image Load
+    - uniform face/body amount
+    - similar file size (currently 150K-2MB!)
+    - caching service?
+  C) React-Inline Style/CSS put in LESS files and imported
+  D) Add Transform/Joins to Meteor Methods
 ```
 
 # Completed Plan

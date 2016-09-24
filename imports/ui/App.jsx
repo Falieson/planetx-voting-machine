@@ -1,5 +1,5 @@
 import { Meteor } from 'meteor/meteor';
-import { Component } from 'react';
+import React, { Component } from 'react';
 
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';

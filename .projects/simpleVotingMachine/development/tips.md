@@ -6,3 +6,6 @@ versus
 `import { BallotsTotalDailyView } from '../../api/ballotsTotalDaily/views.js';`
 
 this causes the builder to uniquely load the path each time because its case insensitive - it will find the module - but because the path is unique its viewed as a separate load.
+
+# Naming functions to be exported versus called inFile
+An exported function is longer and more specific in name and variables than the children functions the exported function calls locally in file. this is b/c of context.

@@ -1,139 +1,51 @@
-import {Component, PropTypes} from 'react';
+import React, {Component, PropTypes} from 'react';
 import {Row, Col} from 'react-flexbox-grid/lib/index';
 
-import FlatButton from 'material-ui/FlatButton';
 import Paper from 'material-ui/Paper';
-import Badge from 'material-ui/Badge';
-import IconButton from 'material-ui/IconButton';
-import Gavel from 'material-ui/svg-icons/action/gavel';
-import Delete from 'material-ui/svg-icons/action/delete-forever';
+
+// Components
+// Deviating from SOP with Containers versus DumbComponents, BallotChoicesButton is Smart.
+import BallotChoicesButton    from '../components/ballotChoices/SmartButton.jsx';
+
 
 class BallotChoicesContainer extends Component {
   render() {
-
-    const styles = {
-      badgeIcon: {
-        top:          10,
-        left:         36
-      },
-      badge: {
-        padding:      3,
-        width:        '100%',
-      },
-      smallUpOne: {
-        height:       72,
-        padding:      6,
-        width:        '100%',
-        textAlign:    'left',
-        border:       '2px dashed rgb(78, 181, 101)',
-      },
-      smallUpTwo: {
-        height:       72,
-        padding:      6,
-        width:        '100%',
-        textAlign:    'left',
-        border:       '2px dashed rgb(59, 154, 80)',
-      },
-      smallUpThree: {
-        height:       72,
-        padding:      6,
-        width:        '100%',
-        textAlign:    'left',
-        border:       '2px dashed rgb(74, 136, 88)',
-      },
-      smallDown: {
-        height:       72,
-        padding:      6,
-        width:        '100%',
-        textAlign:    'left',
-        border:       '2px dashed rgb(218, 165, 63)',
-      },
-    };
-
-    const ChoiceIconFirst = () => (
-      <Badge
-        badgeContent={'1st'}
-        secondary={true}
-        badgeStyle={styles.badgeIcon}
-        style={styles.badge}
-      >
-        <FlatButton
-          label=          "+3 Points"
-          labelPosition=  "after"
-          style=          {styles.smallUpOne}
-          icon=           {<Gavel />}
-        />
-      </Badge>
-    );
-    const ChoiceIconSecond = () => (
-      <Badge
-        badgeContent={'2nd'}
-        secondary={true}
-        badgeStyle={styles.badgeIcon}
-        style={styles.badge}
-      >
-        <FlatButton
-          label=          "+2 Points"
-          labelPosition=  "after"
-          style=          {styles.smallUpTwo}
-          icon=           {<Gavel />}
-        />
-      </Badge>
-    );
-    const ChoiceIconThird = () => (
-      <Badge
-        badgeContent={'3rd'}
-        secondary={true}
-        badgeStyle={styles.badgeIcon}
-        style={styles.badge}
-      >
-        <FlatButton
-          label=          "+1 Point"
-          labelPosition=  "after"
-          style=          {styles.smallUpThree}
-          icon=           {<Gavel />}
-        />
-      </Badge>
-    );
-    const ChoiceIconVeto = () => (
-      <Badge
-        badgeContent={'Veto'}
-        secondary={true}
-        badgeStyle={styles.badgeIcon}
-        style={styles.badge}
-      >
-        <FlatButton
-          label=          "-3 Points"
-          labelPosition=  "after"
-          style=          {styles.smallDown}
-          icon=           {<Delete />}
-        />
-      </Badge>
-    );
+    const style = {
+      padding: '0 2px',
+    }
 
     return (
-      <Paper zDepth={1} style={this.props.style}>
+      <Paper zDepth={1}>
         <Row start="xs">
-          <Col xs >
-            <ChoiceIconFirst />
-          </Col>
-          <Col xs >
-            <ChoiceIconSecond />
-          </Col>
-          <Col xs >
-            <ChoiceIconThird />
-          </Col>
-          <Col xs >
-            <ChoiceIconVeto />
-          </Col>
+          <Col style={style} xs>
+            <BallotChoicesButton
+              choice={'1'}
+            />
+            </Col>
+          <Col style={style} xs>
+            <BallotChoicesButton
+              choice={'2'}
+            />
+            </Col>
+          <Col style={style} xs>
+            <BallotChoicesButton
+              choice={'3'}
+            />
+            </Col>
+          <Col style={style} xs>
+            <BallotChoicesButton
+              choice={'veto'}
+            />
+            </Col>
         </Row>
       </Paper>
     );
   }
+
 }
 
 BallotChoicesContainer.propTypes = {
-  style: PropTypes.object,
+
 }
 
 export default BallotChoicesContainer;

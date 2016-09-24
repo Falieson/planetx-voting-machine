@@ -1,7 +1,7 @@
 // Libraries - Imported
 import { Meteor } from 'meteor/meteor';
 import Tracker from 'tracker-component';
-import { Component } from 'react';
+import React, {Component}  from 'react';
 import { connect } from 'react-redux';
 import ReactTransitionGroup from 'react-addons-transition-group';
 
@@ -33,36 +33,29 @@ class BallotPage extends Tracker.Component {
   }
 
   render() {
-    const style = {
-      choices:  undefined,
-      list:     undefined,
-      register: undefined,
-      submit:   undefined,
-    };
-
     return (
       <div>
         <Row>
           <Col type="row" xs={12}>
-            <BallotChoicesContainer style={style.choices} />
+            <BallotChoicesContainer />
           </Col>
         </Row>
         <Row>
           <Col type="row" xs={12}>
-            <CandidatesListContainer style={style.list} />
+            <CandidatesListContainer />
           </Col>
         </Row>
-        {this.state.loggedIn? null : this.renderVoterRegistration(style.register)}
+        {this.state.loggedIn? null : this.renderVoterRegistration()}
         <Row>
           <Col type="row" xs={12}>
-            <BallotSubmitContainer style={style.submit} />
+            <BallotSubmitContainer />
           </Col>
         </Row>
       </div>
     );
   }
 
-  renderVoterRegistration(containerStyle) {
+  renderVoterRegistration() {
     // Correct way of only rendering 0-1 child component
     // https://github.com/facebook/react/blob/master/docs/docs/10.1-animation.md
     const FirstChild = React.createClass({
@@ -74,7 +67,7 @@ class BallotPage extends Tracker.Component {
 
     return (
       <ReactTransitionGroup component={FirstChild}>
-        {this.props.ballotReady? <Row><Col type="row" xs={12}><NewAccountContainer style={containerStyle} /></Col></Row> : null}
+        {this.props.ballotReady? <NewAccountContainer /> : null}
       </ReactTransitionGroup>
     );
   }

@@ -1,10 +1,31 @@
 # Ranked Voting Machine
 ## 4. Ranked Voting - Core Update
 ### 4.A) UI for Ranked Voting
+##### 4.A.3) Update Ballot Store: Ranked
+Version: `0.0.3.2`
+
+Commit: `{this}`
+
+Branch: `votingMachine/ranked/create`
+
+Message: `SVM 4.A.3) Ranked Choices in Ballot Store. Update most components to handle multiple choice`
+
+Project:
+* [x] `Create Component: BallotChoicesButton`
+* [x] `Update Container: BallotChoices to handleSelectedCandidate`
+* [x] `When SmartButton is Avatar re-position the badge to the left of the image`
+* [x] `Update Submit Ballot Button for multiple choices`
+* [x] `If same candidate used twice remove from previous position`
+* [x] `Added Platform Support for iOS`
+
+Note:
+* `Cycling selection doesn't work perfectly, probably needs to be revisited`
+* `No UI loading on Mobile Device connecting to dev server, might not be an issue on the other servers. `
+
 ##### 4.A.2) Grid Layout - Responsive Layout of Components
 Version: `0.0.3.1`
 
-Commit: `{this}`
+Commit: `#f456b883`
 
 Branch: `votingMachine/ranked/create`
 

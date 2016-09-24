@@ -1,13 +1,28 @@
 const debug = false;
-// TIP: an exported function is longer and more specific in name and variables than the children functions the exported function calls locally in file. this is b/c of context.
-
-
 // BALLOT - UPDATE & SUBMIT
-// # Update Ballot - Candidate Selection (Locally)
 import { CandidatesView } from '../../api/candidates/views.js';
 
-export const BALLOT_UPDATE_CANDIDATE  = 'BALLOT_UPDATE_CANDIDATE';
-export function updateBallotForCandidate(candidateId) {
+
+// # Update Ballot - Update Choices (Locally)
+//   BALLOT_SELECT_CHOICE
+export const BALLOT_SELECT_CHOICE  = 'BALLOT_SELECT_CHOICE';
+export function updateBallotChoiceSelected(selected='1') {
+  return dispatch => {
+    dispatch(updateCurrentBallotChoice(selected));
+  }
+}
+
+function updateCurrentBallotChoice(choice) {
+  return {
+    type:           BALLOT_SELECT_CHOICE,
+    choiceSelected: choice,
+    updatedAt:      Date.now(),
+  }
+}
+
+//   BALLOT_UPDATE_CHOICE
+export const BALLOT_UPDATE_CHOICE  = 'BALLOT_UPDATE_CHOICE';
+export function updateBallotChoiceForCandidate(candidateId) {
   return dispatch => {
     const Candidate = CandidatesView.one(candidateId);
 
@@ -19,7 +34,7 @@ export function updateBallotForCandidate(candidateId) {
 
 function updateStoredBallot(data) {
   return {
-    type:       BALLOT_UPDATE_CANDIDATE,
+    type:       BALLOT_UPDATE_CHOICE,
     updatedAt:  Date.now(),
     data,
     submitReady: true

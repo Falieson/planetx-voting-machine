@@ -1,8 +1,11 @@
 // Libraries - Imported
+import _ from 'lodash';
+
 import { Meteor }              from 'meteor/meteor';
 import Tracker                 from 'tracker-component';
-import {Component, PropTypes}  from 'react';
+import React, {Component, PropTypes}  from 'react';
 import {connect}               from 'react-redux';
+
 
 // Actions
 import {submitVoterRegistrationThenBallot}  from '../actions/Account.js';
@@ -29,26 +32,25 @@ class BallotSubmitContainer extends Tracker.Component {
   }
 
   render() {
-    const { candidateName, submitIsReady } = this.props;
+    const { candidateNames, submitIsReady } = this.props;
 
     return (
-      <div style={this.props.style}>
-        <SubmitBallotButton
-          candidateName = {candidateName}
-          ready         = {submitIsReady}
-          onSubmit      = {this.onSubmitBallot.bind(this)}
-        />
-      </div>
+      <SubmitBallotButton
+        candidateNames = {candidateNames}
+        ready          = {submitIsReady}
+        onSubmit       = {this.onSubmitBallot.bind(this)}
+      />
     );
   }
 
   onSubmitBallot = ()=> {
     const {
-      dispatch, candidateId, accountInfo
+      dispatch, choices, accountInfo
     }  = this.props;
 
-    if(this.state.loggedIn) dispatch( updateBallotForCurrentVoter(candidateId) );
-    else dispatch( submitVoterRegistrationThenBallot(accountInfo, candidateId) );
+    // FIXME: Replaced candidateId with choices but action doesn't support object
+    if(this.state.loggedIn) dispatch( updateBallotForCurrentVoter(choices) );
+    else dispatch( submitVoterRegistrationThenBallot(accountInfo, choices) );
   }
 }
 
@@ -56,16 +58,19 @@ function mapStoreToProps(store) {
   // TODO: Update this with react-reselect so it only recomputes when a necessary value is changed
   const { Ballot, Account } = store;
 
-  // Selected Candidate
-  const {
-    candidateId,
-    candidateName
-  } = Ballot || {
-    candidateId   : '',
-    candidateName : {}
-  };
+  // 1. Selected Candidates
+  const choices = Ballot.choice || {};
+  const choiceKeys = Object.keys(choices);
+  const candidateNames = [];
 
-  // New Account Info
+  _.each(choiceKeys, (key)=> {
+    const choice = choices[key];
+    if(choice.candidateId.length>0) {
+      candidateNames.push(choice.candidateName.last)
+    }
+  });
+
+  // 2. New Account Info
   const {
     username, email, password,
     usernameValid, emailValid, passwordValid
@@ -76,7 +81,7 @@ function mapStoreToProps(store) {
 
   const accountInfo = { username, email, password };
 
-  // Enable or Disable the Submit Button
+  // 3. Enable or Disable the Submit Button
   const AccountReadyForSubmit = usernameValid && emailValid && passwordValid;
   const BallotReadyForSubmit = Ballot.readyForSubmit? true : false;
   const userId = Meteor.userId();
@@ -84,11 +89,8 @@ function mapStoreToProps(store) {
 
   const submitIsReady = BallotReadyForSubmit && (AccountReadyForSubmit || loggedIn);
 
-  return { candidateId, candidateName, accountInfo, submitIsReady };
-}
 
-BallotSubmitContainer.propTypes = {
-  style: PropTypes.object,
+  return { choices, candidateNames, accountInfo, submitIsReady };
 }
 
 export default connect(mapStoreToProps)(BallotSubmitContainer);

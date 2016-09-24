@@ -1,5 +1,5 @@
 import { Meteor } from 'meteor/meteor';
-import {Component} from 'react';
+import React, {Component}  from 'react';
 
 //  UI Components
 import Paper from 'material-ui/Paper';

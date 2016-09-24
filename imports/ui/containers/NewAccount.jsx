@@ -1,8 +1,10 @@
 // Libraries - Imported
 import { Random }   from 'meteor/random';
-import { Component, PropTypes } from 'react';
+import React, {Component, PropTypes}  from 'react';
 import { connect }  from 'react-redux';
 import { throttle } from 'lodash';
+
+import { Row, Col } from 'react-flexbox-grid/lib/index';
 
 // Actions
 import {
@@ -43,7 +45,7 @@ class NewAccountContainer extends Component {
     }
 
     return (
-      <div style={this.props.style}>
+      <Row><Col type="row" xs={12}>
         <VoterRegisterForm
           onChangeUsername    =  {slow(this.onChangeUsername.bind(this))}
           onChangeEmail       =  {slow(this.onChangeEmail.bind(this))}
@@ -52,7 +54,7 @@ class NewAccountContainer extends Component {
           validateEmail       =  {this.state.email}
           validatePassword    =  {this.state.password}
        />
-      </div>
+      </Col></Row>
     );
   }
 
